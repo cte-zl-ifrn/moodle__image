@@ -4,7 +4,9 @@ ARG MOODLE_VERSION
 
 WORKDIR /var/www
 
-RUN curl -L -o v$MOODLE_VERSION.zip https://github.com/moodle/moodle/archive/refs/tags/v$MOODLE_VERSION.zip \
+RUN echo $MOODLE_VERSION
+
+RUN curl -L -xo v$MOODLE_VERSION.zip https://github.com/moodle/moodle/archive/refs/tags/v$MOODLE_VERSION.zip \
     && unzip v$MOODLE_VERSION.zip \
     && rm -rf /var/www/html/ \
     && mv moodle-$MOODLE_VERSION html \
