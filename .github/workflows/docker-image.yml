@@ -24,4 +24,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ctezlifrn/moodle:${{ env.GITHUB_REF_NAME }}
+          tags: ctezlifrn/moodle:3.11.4
