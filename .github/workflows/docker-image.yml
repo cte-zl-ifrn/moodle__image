@@ -25,5 +25,5 @@ jobs:
           context: .
           push: true
           tags: ctezlifrn/moodle:3.11.4
-        build-args:
-          - MOODLE_VERSION=3.11.4
+          build-args: |
+            - MOODLE_VERSION=3.11.4
