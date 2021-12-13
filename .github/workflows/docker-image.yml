@@ -17,7 +17,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: name/app
+          images: ctezlifrn/moodle
           tags: |
             type=semver,pattern={{version}}
       -
