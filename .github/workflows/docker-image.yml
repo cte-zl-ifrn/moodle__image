@@ -25,4 +25,4 @@ jobs:
           context: .
           push: true
           build-args: |
-            MOODLE_VERSION=${{ GITHUB_REF_NAME }}
+            MOODLE_VERSION=${{ env.BRANCH }}
