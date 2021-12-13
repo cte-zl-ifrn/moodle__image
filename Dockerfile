@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /var/www
 
 RUN curl -L -o v.tar.gz https://github.com/moodle/moodle/archive/refs/tags/v$MOODLE_VERSION.tar.gz \
-    && tar -zxvf v.tar.gz \
+    && tar -zxf v.tar.gz \
     && rm v.tar.gz \
     && rm -rf /var/www/html/ \
     && mv moodle-* html \
