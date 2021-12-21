@@ -1,5 +1,7 @@
 # Moodle Image
 
+This image includes a default config.php files configurable using Docker enviroments variables and sentry integração for bug identification and for performance monitoring.
+
 ## How to buid at local host?
 
 ```bash
