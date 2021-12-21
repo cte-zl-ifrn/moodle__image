@@ -27,7 +27,7 @@ ADD src/* /var/www/html/
 
 RUN sed -i 's/function init/function init_original/g' vendor/sentry/sentry/src/functions.php \
     && cat /var/www/patch___vendor__sentry__sentry__src__functions.php >> /var/www/html/vendor/sentry/sentry/src/functions.php \
-    && sed -i 's/abstract class moodle_database {/abstract class moodle_database {\n    protected $tables  = null;/g' lib/dml/moodle_database.php \
+    && sed -i 's/abstract class moodle_database {/abstract class moodle_database {\n    protected $last_span = null;/g' lib/dml/moodle_database.php \
     && sed -i 's/protected function query_start/protected function query_start_original/g' lib/dml/moodle_database.php \
     && sed -i 's/protected function query_end/protected function query_end_original/g' lib/dml/moodle_database.php \
     && sed -ie '$s/}//g' lib/dml/moodle_database.php \
