@@ -1,8 +1,8 @@
 <?php
 
 function get_env(string $varname, $default=null) {
-    $value = getenv($varname, true);
-    return $value === false ? $value : $default;
+    $value = getenv($varname, false);
+    return $value === false ? $default : $value;
 }
 
 function get_env_bool(string $varname, $default='false') {
