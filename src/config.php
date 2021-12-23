@@ -147,7 +147,7 @@ $CFG->dboptions = [
 // If you need both intranet and Internet access please read
 // http://docs.moodle.org/en/masquerading
 
-$CFG->wwwroot = get_env('CFG_WWWROOT', 'http://localhost:7080/');
+$CFG->wwwroot = get_env('CFG_WWWROOT', 'http://localhost:7080');
 
 
 //=========================================================================
@@ -177,7 +177,7 @@ $CFG->dataroot  = get_env('CFG_DATAROOT', '/var/www/moodledata');
 // to make sure the web server process (eg Apache) can access the files.
 // NOTE: the prefixed 0 is important, and don't use quotes.
 
-$CFG->directorypermissions = get_env_int('CFG_DIRECTORYPERMISSIONS', '02777');
+$CFG->directorypermissions = get_env_int('CFG_DIRECTORYPERMISSIONS', '0777');
 
 
 //=========================================================================
