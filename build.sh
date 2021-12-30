@@ -8,7 +8,7 @@ if [ $# -eq 0 ]; then
   echo 'NAME '
   echo '       build.sh'
   echo 'SYNOPSIS'
-  echo '       ./build.sh <moodle_version> <release_number>'
+  echo '       ./build.sh <moodle_version>'
   echo 'DESCRIPTION'
   echo "       Build $FULL_IMAGE_NAME image locally."
   echo 'OPTIONS'
