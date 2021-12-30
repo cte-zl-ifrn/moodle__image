@@ -2,7 +2,7 @@
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
 // Moodle configuration file                                             //
-//                                                                       //                                                                       //
+//                                                                       //
 ///////////////////////////////////////////////////////////////////////////
 //                                                                       //
 // NOTICE OF COPYRIGHT                                                   //
@@ -25,7 +25,7 @@
 //          http://www.gnu.org/copyleft/gpl.html                         //
 //                                                                       //
 ///////////////////////////////////////////////////////////////////////////
-require_once 'get_envs.php';
+require_once 'config_get_envs.php';
 
 unset($CFG);  // Ignore this line
 global $CFG;  // This is necessary here for PHPUnit execution
@@ -47,16 +47,16 @@ $CFG->dbtype = get_env('CFG_DBTYPE', 'pgsql');
 $CFG->dblibrary = get_env('CFG_DBLIBRARY', 'native');
 
 // eg 'localhost' or 'db.isp.com' or IP
-$CFG->dbhost = get_env('CFG_DBHOST', 'db');
+$CFG->dbhost = get_env('CFG_DBHOST', get_env('POSTGRES_HOST', 'db'));
 
 // database name, eg moodle
-$CFG->dbname = get_env('CFG_DBNAME', 'postgres');
-/*  */
+$CFG->dbname = get_env('CFG_DBNAME', get_env('POSTGRES_DATABASE', 'postgres'));
+
 // your database username
-$CFG->dbuser = get_env('CFG_DBUSER', 'postgres');
+$CFG->dbuser = get_env('CFG_DBUSER', get_env('POSTGRES_USER', 'postgres'));
 
 // your database password
-$CFG->dbpass = get_env('CFG_DBPASS', 'postgres');
+$CFG->dbpass = get_env('CFG_DBPASS', get_env('POSTGRES_PASSWORD', 'postgres'));
 
 // prefix to use for all table names
 $CFG->prefix = get_env('CFG_PREFIX', 'mdl_');
@@ -73,7 +73,7 @@ $CFG->dboptions = [
 
     // the TCP port number to use when connecting to the server. keep empty string for the
     //  default port
-    'dbport' => get_env('CFG_DBPORT', '5432'),       
+    'dbport' => get_env('CFG_DBPORT', get_env('POSTGRES_PORT', '5432')),
 
     // On PostgreSQL poolers like pgbouncer don't support advanced options on connection.
     // If you set those in the database then the advanced settings will not be sent.
@@ -163,7 +163,7 @@ $CFG->wwwroot = get_env('CFG_WWWROOT', 'http://localhost:7080');
 //
 // - On Windows systems you might specify something like 'c:\moodledata'
 
-$CFG->dataroot  = get_env('CFG_DATAROOT', '/var/www/moodledata');
+$CFG->dataroot  = get_env('CFG_DATAROOT', '/var/moodledata');
 
 
 //=========================================================================
@@ -177,7 +177,7 @@ $CFG->dataroot  = get_env('CFG_DATAROOT', '/var/www/moodledata');
 // to make sure the web server process (eg Apache) can access the files.
 // NOTE: the prefixed 0 is important, and don't use quotes.
 
-$CFG->directorypermissions = get_env_int('CFG_DIRECTORYPERMISSIONS', '0777');
+$CFG->directorypermissions = 02777;
 
 
 //=========================================================================
@@ -211,8 +211,8 @@ $CFG->admin = get_env('CFG_ADMIN', 'admin');
 // was not getting regenerated for any reason. You would probably want
 // make it much longer. Note that you'll need to delete and manually update
 // any existing key.
-//      $CFG->mnetkeylifetime = 28;
-//
+$CFG->mnetkeylifetime = get_env_int("CFG_MNETKEYLIFETIME", 28);
+
 // Not recommended: Set the following to true to allow the use
 // off non-Moodle standard characters in usernames.
 //      $CFG->extendedusernamechars = true;
@@ -293,13 +293,13 @@ $CFG->admin = get_env('CFG_ADMIN', 'admin');
 //     $CFG->xsendfile = 'X-Accel-Redirect';     // Nginx {@see http://wiki.nginx.org/XSendfile}
 // If your X-Sendfile implementation (usually Nginx) uses directory aliases specify them
 // in the following array setting:
-//     $CFG->xsendfilealiases = array(
-//         '/dataroot/' => $CFG->dataroot,
-//         '/cachedir/' => '/var/www/moodle/cache',    // for custom $CFG->cachedir locations
-//         '/localcachedir/' => '/var/local/cache',    // for custom $CFG->localcachedir locations
-//         '/tempdir/'  => '/var/www/moodle/temp',     // for custom $CFG->tempdir locations
-//         '/filedir'   => '/var/www/moodle/filedir',  // for custom $CFG->filedir locations
-//     );
+$CFG->xsendfilealiases = array(
+    '/dataroot/' => $CFG->dataroot,
+    '/cachedir/' => $CFG->dataroot . '/cache',    // for custom $CFG->cachedir locations
+    '/localcachedir/' => $CFG->dataroot . '/localcache',    // for custom $CFG->localcachedir locations
+    '/tempdir/'  => $CFG->dataroot . '/temp',     // for custom $CFG->tempdir locations
+    '/filedir'   => $CFG->dataroot . '/filedir',  // for custom $CFG->filedir locations
+);
 //
 // YUI caching may be sometimes improved by slasharguments:
 //     $CFG->yuislasharguments = 1;
@@ -312,17 +312,17 @@ $CFG->admin = get_env('CFG_ADMIN', 'admin');
 
 $CFG->session_handler_class = get_env('CFG_SESSION_HANDLER_CLASS', '\core\session\database');
 
-if ($CFG->session_handler_class = '\core\session\database') {
+if ($CFG->session_handler_class == '\core\session\database') {
     $CFG->session_database_acquire_lock_timeout = get_env_int('CFG_SESSION_DATABASE_ACQUIRE_LOCK_TIMEOUT', 120);
 }
 
 //   File session handler (file system locking required):
-if ($CFG->session_handler_class = '\core\session\file') {
+if ($CFG->session_handler_class == '\core\session\file') {
     $CFG->session_file_save_path = get_env('CFG_SESSION_FILE_SAVE_PATH', $CFG->dataroot.'/sessions');
 }
 
 //   Memcached session handler (requires memcached server and extension):
-if ($CFG->session_handler_class = '\core\session\memcached') {
+if ($CFG->session_handler_class == '\core\session\memcached') {
     $CFG->session_memcached_save_path = get_env('CFG_SESSION_MEMCACHED_SAVE_PATH', '127.0.0.1:11211');
     $CFG->session_memcached_prefix = get_env('CFG_SESSION_MEMCACHED_PREFIX', 'memc.sess.key.');
     $CFG->session_memcached_acquire_lock_timeout = get_env_int('CFG_SESSION_MEMCACHED_ACQUIRE_LOCK_TIMEOUT', 120);
@@ -331,7 +331,7 @@ if ($CFG->session_handler_class = '\core\session\memcached') {
 }
 
 //   Redis session handler (requires redis server and redis extension):
-if ($CFG->session_handler_class = '\core\session\redis') {
+if ($CFG->session_handler_class == '\core\session\redis') {
     $CFG->session_redis_host = get_env('CFG_SESSION_REDIS_HOST', '127.0.0.1');
     $CFG->session_redis_port = get_env_int('CFG_SESSION_REDIS_PORT', 6379);
     $CFG->session_redis_database = get_env_int('CFG_SESSION_REDIS_DATABASE', 0);
@@ -491,19 +491,26 @@ $CFG->sslproxy     = get_env_bool('CFG_SSLPROXY', 'false');
 //
 // It is possible to add extra themes directory stored outside of $CFG->dirroot.
 // This local directory does not have to be accessible from internet.
-//
-//     $CFG->themedir = '/location/of/extra/themes';
-//
+
+$CFG->themedir = get_env('CFG_THEMEDIR', '/location/of/extra/themes');
+
 // It is possible to specify different cache and temp directories, use local fast filesystem
 // for normal web servers. Server clusters MUST use shared filesystem for cachedir!
 // Localcachedir is intended for server clusters, it does not have to be shared by cluster nodes.
 // The directories must not be accessible via web.
-//
-//     $CFG->tempdir = '/var/www/moodle/temp';        // Directory MUST BE SHARED by all cluster nodes.
-//     $CFG->cachedir = '/var/www/moodle/cache';      // Directory MUST BE SHARED by all cluster nodes, locking required.
-//     $CFG->localcachedir = '/var/local/cache';      // Intended for local node caching.
-//     $CFG->localrequestdir = '/tmp';                // Intended for local only temporary files. The defaults uses sys_get_temp_dir().
-//
+
+// Directory MUST BE SHARED by all cluster nodes.
+$CFG->tempdir = get_env('CFG_TEMPDIR', '/var/moodledata/temp');
+
+// Directory MUST BE SHARED by all cluster nodes, locking required.
+$CFG->cachedir = get_env('CFG_CACHEDIR', '/var/moodledata/cache');
+
+// Intended for local node caching.
+$CFG->localcachedir = get_env('CFG_LOCALCACHEDIR', '/var/moodledata/localcache');
+
+// Intended for local only temporary files. The defaults uses sys_get_temp_dir().
+$CFG->localrequestdir = get_env('CFG_LOCALREQUESTDIR', '/tmp');
+
 // It is possible to specify a different backup temp directory, use local fast filesystem
 // for normal web servers. Server clusters MUST use shared filesystem for backuptempdir!
 // The directory must not be accessible via web.
@@ -613,9 +620,9 @@ $CFG->sslproxy     = get_env_bool('CFG_SSLPROXY', 'false');
 //
 // Location for lock files used by the File locking factory. This must exist
 // on a shared file system that supports locking.
-//      $CFG->file_lock_root = $CFG->dataroot . '/lock';
-//
-//
+$CFG->file_lock_root = get_env('CFG_FILE_LOCK_ROOT', "$CFG->dataroot/lock");
+
+
 // Alternative task logging.
 // Since Moodle 3.7 the output of al scheduled and adhoc tasks is stored in the database and it is possible to use an
 // alternative task logging mechanism.

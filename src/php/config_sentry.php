@@ -2,6 +2,7 @@
 use Sentry\Tracing\SpanContext;
 
 $CFG->sentry_dsn = get_env('CFG_SENTRY_DSN', $default=null);
+
 if ($sentry_dsn) {
     // Function that makes the code run after everythings.
     function sentry_finish_shutdown()
