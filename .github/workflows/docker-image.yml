@@ -18,8 +18,8 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: ctezlifrn/moodle
-          tags: |
-            type=semver,pattern={{version}}
+          # tags: |
+          #   type=semver,pattern={{version}}
       -
         name: Login to DockerHub
         if: github.event_name != 'pull_request'
