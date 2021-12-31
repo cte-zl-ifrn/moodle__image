@@ -3,11 +3,6 @@
         global $CFG, $USER, $COURSE, $THEME;
 
         if ((property_exists($CFG, 'sentry_dsn')) && ($CFG->sentry_dsn)) {
-            Sentry\init([
-                'dsn' => $CFG->sentry_dsn, 
-                'traces_sample_rate' => 1.0,
-            ]);
-    
             $this->last_sql       = $sql;
             $this->last_params    = $params;
             $this->last_type      = $type;
@@ -39,6 +34,17 @@
                     }
 
                     $scope->setTags($tags);
+                    
+                    if ($USER) {
+                        $scope->setUser(
+                            [
+                                'id' => $USER->id,
+                                'ip_address' => $_SERVER['REMOTE_ADDR'],
+                                'email' => $USER->email ,
+                                'username' => $USER->username,
+                            ]
+                        );
+                    }             
                 });
 
                 $spanContext->setTags($tags);
@@ -50,11 +56,11 @@
                 $this->last_span = $transaction->startChild(Sentry\getCurrentSpanContext());
             }
             //Create breadcrumb
-            $bread_crumb = new Breadcrumb("info", 'default', 'query', $this->last_sql);
+            $bread_crumb = new \Sentry\Breadcrumb("info", 'default', 'query', $this->last_sql);
             \Sentry\addBreadcrumb($bread_crumb);
         }
 
-        self->query_start_original($sql, $params, $type, $extrainfo);
+        $this->query_start_original($sql, $params, $type, $extrainfo);
     }
 
     protected function query_end($result) {
@@ -74,6 +80,6 @@
             
         }
 
-        self->query_end_original($result);
+        $this->query_end_original($result);
     }
 }

@@ -1,7 +1,4 @@
 <?php
-define('MOODLE_INTERNAL', True);
-define('MATURITY_STABLE', 'final');
-require_once('version.php');
 require_once('config_get_envs.php');
 include_once('vendor/autoload.php');
 include_once('deploy/maintenance_freshstatus.php');
@@ -58,8 +55,6 @@ function render_maintenance_message($links) {
 }
 
 function start_maintenance() {
-    global $release;
-
     $links = [];
 
     $email = get_env('CFG_ADMIN_MAIL', null);
@@ -69,6 +64,7 @@ function start_maintenance() {
 
     $freshstatusClient = new FreshstatusClient();
     if ( $freshstatusClient->configured ) {
+        $release = file_get_contents('/var/www/html/tag_version.txt');
         $incident = $freshstatusClient->create_incident($release);
         if ( $incident != null ) {
             file_put_contents('/var/moodledata/freshstatus_incident.id', "{$incident->id}");
