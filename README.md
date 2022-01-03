@@ -1,6 +1,6 @@
 # Moodle Image
 
-This image includes a default config.php files configurable using Docker enviroments variables and sentry integração for bug identification and for performance monitoring.
+This image includes a default config.php files configurable using Docker environment variables and sentry integração for bug identification and for performance monitoring. A example of how you can use this image is available on [here](https://github.com/cte-zl-ifrn/moodle__install__ifrn).
 
 ## How to buid at local host?
 
