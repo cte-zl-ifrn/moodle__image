@@ -1,0 +1,18 @@
+FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-001 AS downloads
+
+
+FROM ctezlifrn/moodle:4.1.0-php8.0-007
+ENV DEBIAN_FRONTEND noninteractive
+
+COPY --chown=www-data:www-data --from=downloads /var/download/mod/* /var/www/html/mod/
+COPY --chown=www-data:www-data --from=downloads /var/download/blocks/* /var/www/html/blocks
+COPY --chown=www-data:www-data --from=downloads /var/download/filter/* /var/www/html/filter
+COPY --chown=www-data:www-data --from=downloads /var/download/lib/editor/atto/plugins/* /var/www/html/lib/editor/atto/plugins
+COPY --chown=www-data:www-data --from=downloads /var/download/enrol/* /var/www/html/enrol
+COPY --chown=www-data:www-data --from=downloads /var/download/tool/* /var/www/html/tool
+COPY --chown=www-data:www-data --from=downloads /var/download/availability/* /var/www/html/availability
+COPY --chown=www-data:www-data --from=downloads /var/download/report/* /var/www/html/report
+COPY --chown=www-data:www-data --from=downloads /var/download/format/* /var/www/html/course/format
+COPY --chown=www-data:www-data --from=downloads /var/download/theme/* /var/www/html/course/theme
+COPY --chown=www-data:www-data --from=downloads /var/download/local/* /var/www/html/local
+COPY --chown=www-data:www-data --from=downloads /var/download/gradeexport/* /var/www/html/gradeexport
