@@ -21,12 +21,11 @@ fi
 OPERATION=$1
 BUILD_VERSION=$2
 MOODLE_VERSION=$3
-FULL_IMAGE_NAME="registry.gitlab.com/zl-installs/zl-ava-installs/plugins:$MOODLE_VERSION-$BUILD_VERSION"
-FULL_IMAGE_NAME="registry.gitlab.com/zl-installs/zl-ava-installs/plugins:$MOODLE_VERSION-$BUILD_VERSION"
+FULL_IMAGE_NAME="registry.gitlab.com/zl-installs/zl-ava-installs/moodle:$MOODLE_VERSION-$BUILD_VERSION"
 
 echo "$OPERATION $FULL_IMAGE_NAME"
 if [ $OPERATION == "build" ]; then  
-    docker build . -f Dockerfile.plugins.$MOODLE_VERSION --progress plain -t $FULL_IMAGE_NAME
+    docker build . -f Dockerfile.$MOODLE_VERSION --progress plain -t $FULL_IMAGE_NAME
 elif [ $OPERATION == "push" ]; then
     docker push $FULL_IMAGE_NAME
 else
