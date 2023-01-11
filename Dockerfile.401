@@ -1,18 +1,30 @@
-FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-001 AS downloads
+FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-002 AS downloads
 
 
-FROM ctezlifrn/moodle:4.1.0-php8.0-007
+FROM ctezlifrn/moodle:4.1.0-php8.0-008
 ENV DEBIAN_FRONTEND noninteractive
 
-COPY --chown=www-data:www-data --from=downloads /var/download/mod/* /var/www/html/mod/
-COPY --chown=www-data:www-data --from=downloads /var/download/blocks/* /var/www/html/blocks
-COPY --chown=www-data:www-data --from=downloads /var/download/filter/* /var/www/html/filter
-COPY --chown=www-data:www-data --from=downloads /var/download/lib/editor/atto/plugins/* /var/www/html/lib/editor/atto/plugins
-COPY --chown=www-data:www-data --from=downloads /var/download/enrol/* /var/www/html/enrol
-COPY --chown=www-data:www-data --from=downloads /var/download/tool/* /var/www/html/tool
-COPY --chown=www-data:www-data --from=downloads /var/download/availability/* /var/www/html/availability
-COPY --chown=www-data:www-data --from=downloads /var/download/report/* /var/www/html/report
-COPY --chown=www-data:www-data --from=downloads /var/download/format/* /var/www/html/course/format
-COPY --chown=www-data:www-data --from=downloads /var/download/theme/* /var/www/html/course/theme
-COPY --chown=www-data:www-data --from=downloads /var/download/local/* /var/www/html/local
-COPY --chown=www-data:www-data --from=downloads /var/download/gradeexport/* /var/www/html/gradeexport
+COPY --chown=www-data:www-data --from=downloads /var/download/mod          /var/www/html/mod
+COPY --chown=www-data:www-data --from=downloads /var/download/blocks       /var/www/html/blocks
+COPY --chown=www-data:www-data --from=downloads /var/download/filter       /var/www/html/filter
+COPY --chown=www-data:www-data --from=downloads /var/download/atto         /var/www/html/lib/editor/atto/plugins
+COPY --chown=www-data:www-data --from=downloads /var/download/enrol        /var/www/html/enrol
+COPY --chown=www-data:www-data --from=downloads /var/download/tool         /var/www/html/admin/tool
+COPY --chown=www-data:www-data --from=downloads /var/download/availability /var/www/html/availability/condition
+COPY --chown=www-data:www-data --from=downloads /var/download/report       /var/www/html/report
+COPY --chown=www-data:www-data --from=downloads /var/download/format       /var/www/html/course/format
+COPY --chown=www-data:www-data --from=downloads /var/download/theme        /var/www/html/theme
+COPY --chown=www-data:www-data --from=downloads /var/download/local        /var/www/html/local
+COPY --chown=www-data:www-data --from=downloads /var/download/gradeexport  /var/www/html/grade/export
+
+# RUN rm -rf /var/www/html/mod/coursecertificate
+
+RUN    mkdir /var/moodledata  ; chown -R www-data:www-data /var/moodledata \
+    && mkdir /var/custom_logs ; chown -R www-data:www-data /var/custom_logs
+
+ADD docker-php-entrypoint /usr/local/bin/
+
+USER www-data
+WORKDIR /var/www/html
+EXPOSE 80
+# ENTRYPOINT ["docker-php-entrypoint"]

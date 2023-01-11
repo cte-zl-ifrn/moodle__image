@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -e
+if [ "$1" == "" ] || [ "$@" == "apache2-foreground" ]; then
+    echo "Starting Moodle"
+    if [ "$CFG_ADMINUSER" != "" ]; then
+        php deploy/maintenance.php start
+        apache2ctl start
+
+        php waitdb.php
+
+        echo "Install Moodle database, if necessary." \
+        && php admin/cli/install_database.php --agree-license --lang=en --adminuser=admin --adminpass=admin --adminemail=admin@server.local --fullname=Moodle --shortname=Moodle --summary=Moodle \
+        && echo "Install Moodle: OK"
+
+        echo "Upgrade Moodle database, if necessary" \
+        && php admin/cli/upgrade.php --non-interactive --allow-unstable \
+        && echo "Upgrade Moodle: OK"
+
+        apache2ctl stop
+        php deploy/maintenance.php stop
+    fi
+
+    # O cron deveria rodar em um outro container para balancear a carga
+    # cron
+
+    if [ "$@" == "" ]; then
+        set -- apache2-foreground "$@"
+    fi
+fi
+
+exec "$@"

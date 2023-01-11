@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+
+  cache:
+    image: redis:7.0.2-alpine
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - "./volumes/cache_data:/data"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]      
+      interval: 3s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+  db:
+    image: postgres:15.1-alpine
+    restart: always
+    # ports:
+    #   - 5433:5432
+    env_file:
+      - .env
+    volumes:
+      # init settings, executed only on deploy
+      - "./src/postgres/:/docker-entrypoint-initdb.d"
+      # database data
+      - "./volumes/fakedb_data:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 3s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+  ava:
+    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-002
+    restart: always
+    ports:
+      - '7080:80'
+    env_file:
+      - .env
+    volumes:
+      # Data
+      - './volumes/ava/moodledata/filedir:/var/moodledata/filedir'
+    depends_on:
+      db:
+        condition: service_healthy
