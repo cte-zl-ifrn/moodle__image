@@ -17,12 +17,7 @@ COPY --chown=www-data:www-data --from=downloads /var/download/theme        /var/
 COPY --chown=www-data:www-data --from=downloads /var/download/local        /var/www/html/local
 COPY --chown=www-data:www-data --from=downloads /var/download/gradeexport  /var/www/html/grade/export
 
-# RUN rm -rf /var/www/html/mod/coursecertificate
-
-RUN    mkdir /var/moodledata  ; chown -R www-data:www-data /var/moodledata \
-    && mkdir /var/custom_logs ; chown -R www-data:www-data /var/custom_logs
-
-ADD docker-php-entrypoint /usr/local/bin/
+RUN sed -i 's/^# pt_BR/pt_BR/' /etc/locale.gen && sed -i 's/^# es_ES/es_ES/' /etc/locale.gen && locale-gen && dpkg-reconfigure locales
 
 USER www-data
 WORKDIR /var/www/html
