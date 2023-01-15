@@ -1,7 +1,7 @@
-FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-004 AS downloads
+FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-006 AS downloads
 
 
-FROM ctezlifrn/moodle:4.1.0-php8.0-008
+FROM ctezlifrn/moodle:4.1.0-php8.0-009
 ENV DEBIAN_FRONTEND noninteractive
 
 COPY --chown=www-data:www-data --from=downloads /var/download/mod          /var/www/html/mod
@@ -16,6 +16,7 @@ COPY --chown=www-data:www-data --from=downloads /var/download/format       /var/
 COPY --chown=www-data:www-data --from=downloads /var/download/theme        /var/www/html/theme
 COPY --chown=www-data:www-data --from=downloads /var/download/local        /var/www/html/local
 COPY --chown=www-data:www-data --from=downloads /var/download/gradeexport  /var/www/html/grade/export
+COPY --chown=www-data:www-data --from=downloads /var/download/profilefield  /var/www/html/user/profile/field
 COPY locale.gen /etc/locale.gen
 
 USER root
