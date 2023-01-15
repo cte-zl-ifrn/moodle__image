@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-002 AS downloads
+FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-004 AS downloads
 
 
 FROM ctezlifrn/moodle:4.1.0-php8.0-008
@@ -16,8 +16,12 @@ COPY --chown=www-data:www-data --from=downloads /var/download/format       /var/
 COPY --chown=www-data:www-data --from=downloads /var/download/theme        /var/www/html/theme
 COPY --chown=www-data:www-data --from=downloads /var/download/local        /var/www/html/local
 COPY --chown=www-data:www-data --from=downloads /var/download/gradeexport  /var/www/html/grade/export
+COPY locale.gen /etc/locale.gen
 
-RUN sed -i 's/^# pt_BR/pt_BR/' /etc/locale.gen && sed -i 's/^# es_ES/es_ES/' /etc/locale.gen && locale-gen && dpkg-reconfigure locales
+USER root
+
+RUN locale-gen
+RUN dpkg-reconfigure locales
 
 USER www-data
 WORKDIR /var/www/html
