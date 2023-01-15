@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-006 AS downloads
+FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-008 AS downloads
 
 
 FROM ctezlifrn/moodle:4.1.0-php8.0-009
