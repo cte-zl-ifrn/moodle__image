@@ -1,7 +1,7 @@
-FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-008 AS downloads
+FROM registry.gitlab.com/zl-installs/zl-ava-installs/plugins:401-009 AS downloads
 
 
-FROM ctezlifrn/moodle:4.1.0-php8.0-009
+FROM ctezlifrn/moodle:4.1.0-php8.0-010
 ENV DEBIAN_FRONTEND noninteractive
 
 COPY --chown=www-data:www-data --from=downloads /var/download/mod          /var/www/html/mod
