@@ -27,7 +27,8 @@ FULL_IMAGE_NAME="registry.gitlab.com/zl-installs/zl-ava-installs/moodle:$MOODLE_
 
 echo "$OPERATION $FULL_IMAGE_NAME"
 if [ $OPERATION == "build" ]; then  
-    docker build . -f Dockerfile.$MOODLE_VERSION --progress plain -t $FULL_IMAGE_NAME
+    docker build . -f Dockerfile.$MOODLE_VERSION --progress plain -t $FULL_IMAGE_NAME \
+    && sed -i "s/moodle:.*$/moodle:$MOODLE_VERSION-$BUILD_VERSION/g" docker-compose.yml
 elif [ $OPERATION == "redeploy" ]; then
     docker compose down \
     && sudo rm -rf volumes \
