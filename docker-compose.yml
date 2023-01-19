@@ -36,6 +36,11 @@ services:
     env_file:
       - .env
     volumes:
+      # Source
+      # - '../moodle__local_suap:/var/www/html/local/suap'
+      # - '../moodle__auth_suap:/var/www/html/auth/suap'
+      # - '../moodle__block_suapattendance:/var/www/html/blocks/suapattendance'
+      
       # Data
       - './volumes/ava/moodledata/filedir:/var/moodledata/filedir'
     depends_on:
