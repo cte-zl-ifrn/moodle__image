@@ -1,6 +1,13 @@
 # moodle
 
-Como construir, publicar ou testar uma mudança na imagem
+Como construir, publicar ou testar uma mudança na imagem.
+
+Lembre-se de fazer login do `registry.gitlab.com`.
+
+```bash
+docker login registry.gitlab.com
+```
+
 ```bash
 NAME
        release.sh
