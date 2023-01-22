@@ -30,7 +30,7 @@ services:
       start_period: 10s
 
   ava:
-    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-010
+    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-011
     ports:
       - '7080:80'
     env_file:
@@ -41,7 +41,7 @@ services:
       # - '../moodle__local_suap:/var/www/html/local/suap'
       # - '../moodle__auth_suap:/var/www/html/auth/suap'
       # - '../moodle__block_suapattendance:/var/www/html/blocks/suapattendance'
-      # - '../moodle__theme_maeve:/var/www/html/theme/maeve'
+      - '../moodle__theme_maeve:/var/www/html/theme/maeve'
       
       # Data
       - './volumes/ava/moodledata:/var/moodledata'

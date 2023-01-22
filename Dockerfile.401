@@ -1,4 +1,4 @@
-FROM ctezlifrn/moodle:4.1.0-php8.0-010
+FROM ctezlifrn/moodle:4.1.0-php8.0-011
 ENV DEBIAN_FRONTEND noninteractive
 
 COPY locale.gen /etc/locale.gen
@@ -139,7 +139,7 @@ RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance
 
 WORKDIR /var/www/html/theme
-RUN curl -o d.zip https://moodle.org/plugins/download.php/28087/theme_moove_moodle41_2022112801.zip && unzip d.zip \
+RUN curl -o d.zip https://moodle.org/plugins/download.php/28087/theme_moove_moodle41_2022112801.zip && unzip -o d.zip \
     && rm d.zip
 
 # profile_field_dynamicmenu::__construct() must support $fielddata as the third argument and pass it to the parent constructor
