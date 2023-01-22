@@ -37,10 +37,10 @@ services:
       - .env
     volumes:
       # Source
-      # - '../moodle__image/src/php/config.php:/var/www/html/config.php'
-      # - '../moodle__local_suap:/var/www/html/local/suap'
-      # - '../moodle__auth_suap:/var/www/html/auth/suap'
-      # - '../moodle__block_suapattendance:/var/www/html/blocks/suapattendance'
+      - '../moodle__image/src/php/config.php:/var/www/html/config.php'
+      - '../moodle__local_suap:/var/www/html/local/suap'
+      - '../moodle__auth_suap:/var/www/html/auth/suap'
+      - '../moodle__block_suapattendance:/var/www/html/blocks/suapattendance'
       - '../moodle__theme_maeve:/var/www/html/theme/maeve'
       
       # Data
