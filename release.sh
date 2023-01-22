@@ -32,9 +32,9 @@ if [ $OPERATION == "build" ]; then
 elif [ $OPERATION == "redeploy" ]; then
     docker compose down \
     && sudo rm -rf volumes \
-    && ./release.sh build 401 010 \
+    && ./release.sh build $MOODLE_VERSION $BUILD_VERSION \
     && git checkout volumes/ava/moodledata/filedir/.empty \
-    && sudo chown -R www-data:www-data volumes/ava/moodledata/filedir \
+    && sudo chown -R www-data:www-data volumes/ava/moodledata \
     && sed -i "s/moodle:.*$/moodle:$MOODLE_VERSION-$BUILD_VERSION/g" docker-compose.yml \
     && docker compose up
 elif [ $OPERATION == "push" ]; then
