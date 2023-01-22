@@ -2,7 +2,8 @@ services:
 
   cache:
     image: redis:7.0.2-alpine
-    restart: always
+    ports:
+      - '6379:6379'
     env_file:
       - .env
     volumes:
@@ -29,20 +30,21 @@ services:
       start_period: 10s
 
   ava:
-    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-009
-    restart: always
+    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-010
     ports:
       - '7080:80'
     env_file:
       - .env
     volumes:
       # Source
+      # - '../moodle__image/src/php/config.php:/var/www/html/config.php'
       # - '../moodle__local_suap:/var/www/html/local/suap'
       # - '../moodle__auth_suap:/var/www/html/auth/suap'
       # - '../moodle__block_suapattendance:/var/www/html/blocks/suapattendance'
+      # - '../moodle__theme_maeve:/var/www/html/theme/maeve'
       
       # Data
-      - './volumes/ava/moodledata/filedir:/var/moodledata/filedir'
+      - './volumes/ava/moodledata:/var/moodledata'
     depends_on:
       db:
         condition: service_healthy
