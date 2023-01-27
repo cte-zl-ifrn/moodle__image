@@ -5,20 +5,22 @@ COPY locale.gen /etc/locale.gen
 
 USER root
 
-RUN locale-gen
-RUN dpkg-reconfigure locales
+RUN locale-gen && \
+    dpkg-reconfigure locales && \
+    apt install -y vim
 
 USER www-data
 
 WORKDIR /var/www/html/mod
 RUN curl -o d.zip https://moodle.org/plugins/download.php/27960/mod_checklist_moodle41_2022111900.zip && unzip d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/27862/mod_customcert_moodle41_2022041901.zip && unzip d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/28434/mod_customcert_moodle41_2022041902.zip && unzip d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28300/mod_game_moodle41_2023010801.zip && unzip d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/27856/mod_mediagallery_moodle40_2022051101.zip && unzip d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/27947/mod_attendance_moodle41_2022111700.zip && unzip d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/28436/mod_attendance_moodle41_2023012601.zip && unzip d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/28247/mod_offlinequiz_moodle40_2022111501.zip && unzip d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/27934/mod_coursecertificate_moodle41_2022111500.zip && unzip d.zip \
     && rm d.zip
 # RUN curl -o d.zip https://moodle.org/plugins/download.php/28189/mod_bigbluebuttonbn_moodle311_2021101011.zip && unzip d.zip
-# RUN curl -o d.zip https://moodle.org/plugins/download.php/27934/mod_coursecertificate_moodle41_2022111500.zip && unzip d.zip
 # RUN curl -o d.zip https://moodle.org/plugins/download.php/28251/mod_hsuforum_moodle40_2022122100.zip && unzip d.zip
 # RUN curl -o d.zip https://moodle.org/plugins/download.php/28179/mod_hvp_moodle41_2022121200.zip && unzip d.zip
 # RUN curl -o d.zip https://moodle.org/plugins/download.php/27564/mod_journal_moodle40_2022091600.zip && unzip d.zip
@@ -29,11 +31,16 @@ WORKDIR /var/www/html/blocks
 RUN curl -o d.zip https://moodle.org/plugins/download.php/27962/block_checklist_moodle41_2022111900.zip && unzip d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28052/block_completion_progress_moodle41_2022112800.zip && unzip d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/26495/block_stash_moodle41_2022042100.zip && unzip d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28178/block_xp_moodle41_2022112609.zip && unzip d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/28412/block_xp_moodle41_2022112610.zip && unzip d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/27924/block_game_moodle40_2022042733.zip && unzip d.zip \
     && rm d.zip
-# RUN curl -o d.zip https://moodle.org/plugins/download.php/5422/block_enrollment_moodle26_2014021900.zip && unzip d.zip
 
+WORKDIR /var/www/html/mod/book/tool
+RUN curl -o d.zip https://moodle.org/plugins/download.php/25049/booktool_wordimport_moodle41_2021083100.zip && unzip d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/11995/booktool_exportepub_moodle31_2016081500.zip && unzip d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/15925/booktool_importepub_moodle34_2018020100.zip && unzip d.zip \
+    && rm d.zip
+    
 WORKDIR /var/www/html/filter
 RUN curl -o d.zip https://moodle.org/plugins/download.php/24270/filter_syntaxhighlighter_moodle41_2021052101.zip && unzip d.zip \
     && rm d.zip
@@ -134,8 +141,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/5944/profilefield_cpf_
     && rm d.zip
 
 WORKDIR /var/www/html/
-RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.010 | tar -zx && mv moodle__local_suap-* local/suap \
-    && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.018 | tar -zx && mv moodle__auth_suap-* auth/suap \
+RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.016 | tar -zx && mv moodle__local_suap-* local/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance
 
 WORKDIR /var/www/html/theme
