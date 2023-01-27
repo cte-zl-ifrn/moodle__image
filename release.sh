@@ -40,7 +40,8 @@ elif [ $OPERATION == "redeploy" ]; then
 elif [ $OPERATION == "push" ]; then
     docker push $FULL_IMAGE_NAME \
     && git tag $BUILD_VERSION \
-    && git push origin $BUILD_VERSION
+    && git push origin $BUILD_VERSION \
+    && git push --tags
 else
     echo "Choose a valid command (build or push)"
 fi
