@@ -9,6 +9,8 @@ RUN locale-gen && \
     dpkg-reconfigure locales && \
     apt install -y vim
 
+COPY php-extra.ini /usr/local/etc/php/conf.d/extra.ini
+
 USER www-data
 
 WORKDIR /var/www/html/mod
