@@ -1,4 +1,4 @@
-FROM ctezlifrn/moodle:4.1.0-php8.0-011
+FROM ctezlifrn/moodle:4.1.0-php8.0-013
 ENV DEBIAN_FRONTEND noninteractive
 
 COPY locale.gen /etc/locale.gen
