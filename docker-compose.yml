@@ -65,5 +65,4 @@ services:
       db:
         condition: service_healthy
     user: root
-    # entrypoint: /bin/bash  
     command: exec-cron.sh
