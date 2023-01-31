@@ -142,13 +142,6 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/5944/profilefield_cpf_
     && curl -o d.zip https://moodle.org/plugins/download.php/27042/profilefield_orcid_moodle40_2022070900.zip && unzip d.zip \
     && rm d.zip
 
-WORKDIR /var/www/html/
-RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.023 | tar -zx && mv moodle__local_suap-* local/suap \
-    && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance
-
-WORKDIR /var/www/html/theme
-RUN curl -o d.zip https://moodle.org/plugins/download.php/28087/theme_moove_moodle41_2022112801.zip && unzip -o d.zip \
-    && rm d.zip
 
 # profile_field_dynamicmenu::__construct() must support $fielddata as the third argument and pass it to the parent constructor
 # line 103 of /user/profile/lib.php: call to debugging()
@@ -167,8 +160,16 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28087/theme_moove_mood
 # line 1024 of /lib/formslib.php: call to user_editadvanced_form->definition_after_data()
 # line 360 of /user/editadvanced.php: call to moodleform->display()
 
-USER root
-RUN cp /var/spool/cron/crontabs/root /var/spool/cron/crontabs/www-data
+WORKDIR /var/www/html/theme
+RUN curl -o d.zip https://moodle.org/plugins/download.php/28087/theme_moove_moodle41_2022112801.zip && unzip -o d.zip \
+    && rm d.zip
+
+WORKDIR /var/www/html/
+RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.024 | tar -zx && mv moodle__local_suap-* local/suap \
+    && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance
+
+# USER root
+# RUN cp /var/spool/cron/crontabs/root /var/spool/cron/crontabs/www-data
 
 USER www-data
 WORKDIR /var/www/html
