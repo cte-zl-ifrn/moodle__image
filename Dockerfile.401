@@ -69,6 +69,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangep
     && curl -o d.zip https://moodle.org/plugins/download.php/23370/tool_ribbons_moodle310_2021020400.zip && unzip d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/27931/tool_certificate_moodle41_2022111500.zip && unzip d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/27935/tool_datewatch_moodle41_2022111500.zip && unzip d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/24851/tool_uploadenrolmentmethods_moodle40_2021080201.zip && unzip d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/availability/condition
