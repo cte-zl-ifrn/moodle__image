@@ -103,7 +103,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/25665/report_extendedl
     && rm d.zip
 
 WORKDIR /var/www/html/course/format
-RUN curl -o d.zip https://moodle.org/plugins/download.php/27578/format_tiles_moodle40_2022091700.zip && unzip d.zip \
+RUN curl -o d.zip https://moodle.org/plugins/download.php/28461/format_tiles_moodle41_2023013000.zip && unzip d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/26671/format_remuiformat_moodle40_2022120500.zip && unzip d.zip \
     && rm d.zip
 
