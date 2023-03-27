@@ -6,7 +6,8 @@ COPY php-extra.ini /usr/local/etc/php/conf.d/extra.ini
 COPY locale.gen /etc/locale.gen
 RUN locale-gen && \
     dpkg-reconfigure locales && \
-    apt install -y vim
+    apt install -y vim && \
+    a2enmod headers
 
 USER www-data
 
