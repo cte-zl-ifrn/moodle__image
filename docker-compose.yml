@@ -49,21 +49,21 @@ services:
       db:
         condition: service_healthy
 
-  cron:
-    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-029
-    env_file:
-      - .env
-    volumes:
-      # Source
-      # - '../moodle__image/src/php/config.php:/var/www/html/config.php'
-      # - '../moodle__local_suap:/var/www/html/local/suap'
-      # - '../moodle__block_suapattendance:/var/www/html/blocks/suapattendance'
-      # - '../moodle__theme_maeve:/var/www/html/theme/maeve'
-      # Data
-      - './volumes/ava/moodledata:/var/moodledata'
-      - './volumes/ava/custom_log:/var/custom_log'      
-    depends_on:
-      db:
-        condition: service_healthy
-    user: root
-    command: exec-cron.sh
+  # cron:
+  #   image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-029
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     # Source
+  #     - '../moodle__image/src/php/config.php:/var/www/html/config.php'
+  #     - '../moodle__local_suap:/var/www/html/local/suap'
+  #     - '../moodle__block_suapattendance:/var/www/html/blocks/suapattendance'
+  #     - '../moodle__theme_maeve:/var/www/html/theme/maeve'
+  #     # Data
+  #     - './volumes/ava/moodledata:/var/moodledata'
+  #     - './volumes/ava/custom_log:/var/custom_log'      
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #   user: root
+  #   command: exec-cron.sh
