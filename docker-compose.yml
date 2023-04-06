@@ -30,7 +30,7 @@ services:
       start_period: 10s
 
   ava:
-    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-029
+    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-030
     build: .
     ports:
       - '7080:80'
@@ -48,22 +48,3 @@ services:
     depends_on:
       db:
         condition: service_healthy
-
-  # cron:
-  #   image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-029
-  #   env_file:
-  #     - .env
-  #   volumes:
-  #     # Source
-  #     - '../moodle__image/src/php/config.php:/var/www/html/config.php'
-  #     - '../moodle__local_suap:/var/www/html/local/suap'
-  #     - '../moodle__block_suapattendance:/var/www/html/blocks/suapattendance'
-  #     - '../moodle__theme_maeve:/var/www/html/theme/maeve'
-  #     # Data
-  #     - './volumes/ava/moodledata:/var/moodledata'
-  #     - './volumes/ava/custom_log:/var/custom_log'      
-  #   depends_on:
-  #     db:
-  #       condition: service_healthy
-  #   user: root
-  #   command: exec-cron.sh

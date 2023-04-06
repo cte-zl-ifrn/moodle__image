@@ -16,7 +16,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/27960/mod_checklist_mo
     && curl -o d.zip https://moodle.org/plugins/download.php/28707/mod_customcert_moodle41_2022041903.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28300/mod_game_moodle41_2023010801.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/27856/mod_mediagallery_moodle40_2022051101.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28783/mod_attendance_moodle41_2023020105.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/28783/mod_attendance_moodle41_2023020107.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28247/mod_offlinequiz_moodle40_2022111501.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28746/mod_coursecertificate_moodle41_2023031400.zip && unzip -o d.zip \
     && rm d.zip
@@ -55,7 +55,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/21447/enrol_xp_moodle4
 WORKDIR /var/www/html/admin/tool
 RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangeprofilefields_moodle40_2022042900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28188/tool_clearbackupfiles_moodle41_2022121200.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28776/tool_coursearchiver_moodle41_2023032100.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/28776/tool_coursearchiver_moodle41_2023040400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/18375/tool_hidecourses_moodle41_2018112800.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/23370/tool_ribbons_moodle310_2021020400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28744/tool_certificate_moodle41_2023031400.zip && unzip -o d.zip \
@@ -96,14 +96,14 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28680/format_tiles_moo
 
 WORKDIR /var/www/html/theme
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28087/theme_moove_moodle41_2022112801.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28777/theme_adaptable_moodle41_2022112302.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/28777/theme_adaptable_moodle41_2022112303.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/local
 RUN curl -o d.zip https://moodle.org/plugins/download.php/21216/local_analytics_moodle38_2019070801.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28080/local_cohortrole_moodle41_2022112900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28172/local_mailtest_moodle41_2022121100.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/27251/local_maintenance_livecheck_moodle40_2022071200.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/28813/local_maintenance_livecheck_moodle41_2023010500.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/grade/export
