@@ -27,6 +27,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/27962/block_checklist_
     && curl -o d.zip https://moodle.org/plugins/download.php/26495/block_stash_moodle41_2022042100.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28412/block_xp_moodle41_2022112610.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/27924/block_game_moodle40_2022042733.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/13802/block_ranking_moodle41_2017050300.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/mod/book/tool
@@ -96,7 +97,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28680/format_tiles_moo
 
 WORKDIR /var/www/html/theme
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28087/theme_moove_moodle41_2022112801.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28777/theme_adaptable_moodle41_2022112303.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/28777/theme_adaptable_moodle41_2022112304.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/local
