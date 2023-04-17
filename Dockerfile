@@ -1,4 +1,4 @@
-FROM ctezlifrn/moodle:4.1.2-php8.1-015
+FROM ctezlifrn/moodle:4.1.2-php8.1-033
 ENV DEBIAN_FRONTEND noninteractive
 
 USER root
@@ -85,6 +85,10 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/22786/availability_xp_
     && curl -o d.zip https://moodle.org/plugins/download.php/27907/availability_relativedate_moodle41_2022111100.zip && unzip -o d.zip \
     && rm d.zip
 
+WORKDIR /var/www/html/question/format/
+RUN curl -o d.zip https://moodle.org/plugins/download.php/27954/qformat_h5p_moodle41_2020071510.zip && unzip -o d.zip \
+    && rm d.zip
+
 WORKDIR /var/www/html/report
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28589/report_extendedlog_moodle41_2023022000.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/24073/report_overviewstats_moodle311_2021050500.zip && unzip -o d.zip \
@@ -129,8 +133,8 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/5944/profilefield_cpf_
 
 
 WORKDIR /var/www/html/
-RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.028         | tar -zx && mv moodle__local_suap-* local/suap \
-    && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.021          | tar -zx && mv moodle__auth_suap-* auth/suap \
+RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.029         | tar -zx && mv moodle__local_suap-* local/suap \
+    && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.022          | tar -zx && mv moodle__auth_suap-* auth/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance
 
 # theme_aberto v3.11 2021052101

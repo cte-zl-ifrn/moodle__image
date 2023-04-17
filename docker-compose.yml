@@ -30,7 +30,7 @@ services:
       start_period: 10s
 
   ava:
-    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-031
+    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-032
     build: .
     ports:
       - '7080:80'
