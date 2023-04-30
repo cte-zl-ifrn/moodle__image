@@ -9,7 +9,7 @@ services:
     volumes:
       - "./volumes/cache_data:/data"
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]      
+      test: [ "CMD", "redis-cli", "ping" ]
       interval: 3s
       timeout: 3s
       retries: 3
@@ -23,14 +23,14 @@ services:
     volumes:
       - "./volumes/db:/var/lib/postgresql/data"
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "postgres"]
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
       interval: 3s
       timeout: 3s
       retries: 3
       start_period: 10s
 
   ava:
-    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:401-032
+    image: registry.gitlab.com/zl-installs/zl-ava-installs/moodle:moodle4.1.3-php8.1-release001.039
     build: .
     ports:
       - '7080:80'
@@ -41,8 +41,7 @@ services:
       # - '../moodle__image/src/php/config.php:/var/www/html/config.php'
       # - '../moodle__local_suap:/var/www/html/local/suap'
       # - '../moodle__block_suapattendance:/var/www/html/blocks/suapattendance'
-      # - '../moodle__theme_maeve:/var/www/html/theme/maeve'
-      
+
       # Data
       - './volumes/ava/moodledata:/var/moodledata'
     depends_on:
