@@ -100,7 +100,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28680/format_tiles_moo
     && rm d.zip
 
 WORKDIR /var/www/html/theme
-RUN curl -o d.zip https://moodle.org/plugins/download.php/28087/theme_moove_moodle41_2022112801.zip && unzip -o d.zip \
+RUN curl -o d.zip https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/zip/refs/tags/4.1.1.r1 && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28938/theme_adaptable_moodle41_2022112304.zip && unzip -o d.zip \
     && rm d.zip
 
