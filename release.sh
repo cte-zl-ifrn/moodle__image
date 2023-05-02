@@ -21,27 +21,15 @@ if [ $# -lt 2 ]; then
 fi
 
 OPERATION=$1
-RELEASE_VERSION="moodle4.1.3-php8.1-release001"
-IMAGE_NAME="moodle:$RELEASE_VERSION.$2"
-FULL_IMAGE_NAME="registry.gitlab.com/zl-installs/zl-ava-installs/$IMAGE_NAME"
+RELEASE_VERSION="moodle4.1.3-php8.1-release001.$2"
+FULL_IMAGE_NAME="registry.gitlab.com/zl-installs/zl-ava-installs/moodle:$RELEASE_VERSION"
 
 echo "$OPERATION $FULL_IMAGE_NAME"
 if [ $OPERATION == "build" ]; then  
-    docker build . -f Dockerfile --progress plain --no-cache -t $FULL_IMAGE_NAME \
-    && sed -i "s/moodle:.*$/$IMAGE_NAME/g" docker-compose.yml
-elif [ $OPERATION == "redeploy" ]; then
-    docker compose down \
-    && sudo rm -rf volumes \
-    && ./release.sh build $IMAGE_NAME \
-    && git checkout volumes/ava/moodledata/filedir/.empty \
-    && sudo chown -R www-data:www-data volumes/ava/moodledata \
-    && sed -i "s/moodle:.*$/$IMAGE_NAME/g" docker-compose.yml \
-    && docker compose up
+    docker build . -f Dockerfile --progress plain -t $FULL_IMAGE_NAME \
+    && sed -i "s/moodle:.*$/moodle:$RELEASE_VERSION/g" docker-compose.yml
 elif [ $OPERATION == "push" ]; then
-    docker push $FULL_IMAGE_NAME \
-    && git tag $IMAGE_NAME \
-    && git push origin $IMAGE_NAME \
-    && git push --tags
+    docker push $FULL_IMAGE_NAME
 else
     echo "Choose a valid command (build or push)"
 fi
