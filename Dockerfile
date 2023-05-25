@@ -25,7 +25,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28962/mod_checklist_mo
 WORKDIR /var/www/html/blocks
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28963/block_checklist_moodle42_2023041400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28052/block_completion_progress_moodle41_2022112800.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28976/block_stash_moodle42_2022042113.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29216/block_stash_moodle42_2023051500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29005/block_xp_moodle42_2023042400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/27924/block_game_moodle40_2022042733.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/13802/block_ranking_moodle41_2017050300.zip && unzip -o d.zip \
@@ -62,7 +62,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangep
     && curl -o d.zip https://moodle.org/plugins/download.php/23370/tool_ribbons_moodle310_2021020400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29035/tool_certificate_moodle42_2023042500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29039/tool_datewatch_moodle42_2023042500.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/24851/tool_uploadenrolmentmethods_moodle40_2021080201.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29222/tool_uploadenrolmentmethods_moodle41_2023051500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28084/tool_migratehvp2h5p_moodle41_2022112900.zip && unzip -o d.zip \
     && rm d.zip
 
@@ -94,6 +94,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/27954/qformat_h5p_mood
 WORKDIR /var/www/html/report
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28589/report_extendedlog_moodle41_2023022000.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/24073/report_overviewstats_moodle311_2021050500.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/28315/report_coursesize_moodle41_2023010900.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/course/format
@@ -102,13 +103,13 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28680/format_tiles_moo
     && rm d.zip
 
 WORKDIR /var/www/html/theme
-RUN curl -o d.zip https://moodle.org/plugins/download.php/28938/theme_adaptable_moodle41_2022112304.zip && unzip -o d.zip \
+RUN curl -o d.zip https://moodle.org/plugins/download.php/29152/theme_adaptable_moodle41_2022112306.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/local
 RUN curl -o d.zip https://moodle.org/plugins/download.php/21216/local_analytics_moodle38_2019070801.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29011/local_cohortrole_moodle42_2023042400.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28172/local_mailtest_moodle41_2022121100.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29145/local_mailtest_moodle42_2023050600.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28813/local_maintenance_livecheck_moodle41_2023010500.zip && unzip -o d.zip \
     && rm d.zip
 
@@ -127,7 +128,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/5944/profilefield_cpf_
     && curl -o d.zip https://moodle.org/plugins/download.php/13215/profilefield_dynamicmenu_moodle32_2017021201.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/21799/profilefield_multiselect_moodle39_2020061800.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/23487/profilefield_associated_moodle310_2021021600.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/25909/profilefield_conditional_moodle311_2022012800.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29236/availability_othercompleted_moodle42_2023050310.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/26428/profilefield_statictext_moodle40_2022041200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/27042/profilefield_orcid_moodle40_2022070900.zip && unzip -o d.zip \
     && rm d.zip
