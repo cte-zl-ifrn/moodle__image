@@ -64,6 +64,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangep
     && curl -o d.zip https://moodle.org/plugins/download.php/29039/tool_datewatch_moodle42_2023042500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29222/tool_uploadenrolmentmethods_moodle41_2023051500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28084/tool_migratehvp2h5p_moodle41_2022112900.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29223/tool_redirects_moodle41_2023051100.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/availability/condition
@@ -75,7 +76,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/22786/availability_xp_
     && curl -o d.zip https://moodle.org/plugins/download.php/28754/availability_cohort_moodle41_2023010500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28760/availability_password_moodle41_2023010500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/16615/availability_stash_moodle41_2018050901.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/25682/availability_othercompleted_moodle311_2021112500.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29236/availability_othercompleted_moodle42_2023050310.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/11311/availability_badge_moodle31_2016020200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/16249/availability_enrol_moodle34_2018030900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/24334/availability_sectioncompleted_moodle40_2021052800.zip && unzip -o d.zip \
@@ -128,9 +129,9 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/5944/profilefield_cpf_
     && curl -o d.zip https://moodle.org/plugins/download.php/13215/profilefield_dynamicmenu_moodle32_2017021201.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/21799/profilefield_multiselect_moodle39_2020061800.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/23487/profilefield_associated_moodle310_2021021600.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29236/availability_othercompleted_moodle42_2023050310.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/26428/profilefield_statictext_moodle40_2022041200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/27042/profilefield_orcid_moodle40_2022070900.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29142/profilefield_conditional_moodle42_2023050600.zip && unzip -o d.zip \
     && rm d.zip
 
 
