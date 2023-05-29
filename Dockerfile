@@ -19,7 +19,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28962/mod_checklist_mo
     && curl -o d.zip https://moodle.org/plugins/download.php/28807/mod_attendance_moodle41_2023020107.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28247/mod_offlinequiz_moodle40_2022111501.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29037/mod_coursecertificate_moodle42_2023042500.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28179/mod_hvp_moodle41_2022121200.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29306/mod_hvp_moodle42_2023052600.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/blocks
