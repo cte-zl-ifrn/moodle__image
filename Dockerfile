@@ -13,12 +13,12 @@ USER www-data
 
 WORKDIR /var/www/html/mod
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28962/mod_checklist_moodle42_2023041400.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28707/mod_customcert_moodle41_2022041903.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29316/mod_customcert_moodle41_2022112800.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29022/mod_game_moodle42_2023042500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/27856/mod_mediagallery_moodle40_2022051101.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28807/mod_attendance_moodle41_2023020107.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28247/mod_offlinequiz_moodle40_2022111501.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29037/mod_coursecertificate_moodle42_2023042500.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29322/mod_coursecertificate_moodle42_2023053000.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29306/mod_hvp_moodle42_2023052600.zip && unzip -o d.zip \
     && rm d.zip
 
@@ -33,8 +33,6 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28963/block_checklist_
 
 WORKDIR /var/www/html/mod/book/tool
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28584/booktool_wordimport_moodle41_2023021700.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/11995/booktool_exportepub_moodle31_2016081500.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/15925/booktool_importepub_moodle34_2018020100.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/filter
@@ -60,8 +58,8 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangep
     && curl -o d.zip https://moodle.org/plugins/download.php/28875/tool_coursearchiver_moodle42_2023040400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/18375/tool_hidecourses_moodle41_2018112800.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/23370/tool_ribbons_moodle310_2021020400.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29035/tool_certificate_moodle42_2023042500.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29039/tool_datewatch_moodle42_2023042500.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29321/tool_certificate_moodle42_2023053000.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29320/tool_datewatch_moodle42_2023053000.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29222/tool_uploadenrolmentmethods_moodle41_2023051500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28084/tool_migratehvp2h5p_moodle41_2022112900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29223/tool_redirects_moodle41_2023051100.zip && unzip -o d.zip \
@@ -147,7 +145,6 @@ RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/re
 # theme_ledor  2020081301
 # https://moodle.org/plugins/download.php/28189/mod_bigbluebuttonbn_moodle311_2021101011.zip
 # https://moodle.org/plugins/download.php/28251/mod_hsuforum_moodle40_2022122100.zip
-# https://moodle.org/plugins/download.php/28179/mod_hvp_moodle41_2022121200.zip
 # https://moodle.org/plugins/download.php/27564/mod_journal_moodle40_2022091600.zip
 # https://moodle.org/plugins/download.php/26900/mod_questionnaire_moodle40_2021062301.zip
 # https://moodle.org/plugins/download.php/27665/mod_vpl_moodle40_2022093012.zip
