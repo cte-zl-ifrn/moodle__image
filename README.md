@@ -31,6 +31,6 @@ EXAMPLES
 sudo rm -rf volumes
 mkdir -p volumes/ava/moodledata && touch volumes/ava/moodledata/.empty && chmod -R 777 volumes/ava/moodledata
 docker compose up
-curl -X POST -H "Authentication: Token 1" -d ./moodle__local_suap/sync_up_enrolments_sample.json http://localhost:7080/local/suap/sync_up_enrolments.php 
+curl -X POST -H "Authentication: Token 1" -d ./moodle__local_suap/sync_up_enrolments_sample.json http:/localhost:7080/local/suap/sync_up_enrolments.php 
 ```
 
