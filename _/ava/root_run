@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source /var/dockers/_/functions
+
+docker compose run -u root $SERVICE_NAME $@

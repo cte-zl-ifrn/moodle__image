@@ -1,0 +1,6 @@
+#!/bin/bash
+source /var/dockers/_/functions
+
+cd /var/dockers/
+
+docker compose exec ava php admin/cli/cron.php >> /var/dockers/volumes/ava/logs/cron.log

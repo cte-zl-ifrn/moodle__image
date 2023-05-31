@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+source /var/dockers/_/functions
+
+if [[ `docker container ls | grep sead_db-1` ]]; then 
+  echo_info "O banco já está em execução"
+else
+  docker compose up -d $@ $SERVICE_NAME
+  /var/dockers/_/$SERVICE_NAME/wait
+fi

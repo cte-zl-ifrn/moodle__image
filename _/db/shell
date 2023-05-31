@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source /var/dockers/_/functions
+
+/var/dockers/_/$SERVICE_NAME/exec sh

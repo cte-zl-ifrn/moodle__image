@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+source /var/dockers/_/functions
+
+docker compose logs -f $@ $SERVICE_NAME
