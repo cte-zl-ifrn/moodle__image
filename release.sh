@@ -12,11 +12,11 @@ if [ $# -lt 2 ]; then
     echo '       <build_version>  Build version'
     echo 'EXAMPLES'
     echo '       o   Build docker image:'
-    echo "                  ./release.sh build 034"
+    echo "                  ./release.sh build 057"
     echo '       o   Push docker image and create git tag:'
-    echo "                  ./release.sh push 034"
+    echo "                  ./release.sh push 057"
     echo '       o   Down, remove volumes, build docker image, recreate volumes, update docker-compose.yml and up:'
-    echo "                  ./release.sh redeploy 034"
+    echo "                  ./release.sh redeploy 057"
     exit
 fi
 
