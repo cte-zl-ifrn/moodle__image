@@ -1,4 +1,4 @@
-FROM ctezlifrn/moodle:moodle4.1.3-php8.1-release001
+FROM ctezlifrn/moodle:moodle4.1.4-php8.1-release002
 ENV DEBIAN_FRONTEND noninteractive
 
 USER root
@@ -13,20 +13,20 @@ USER www-data
 
 WORKDIR /var/www/html/mod
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28962/mod_checklist_moodle42_2023041400.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29316/mod_customcert_moodle41_2022112800.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29393/mod_customcert_moodle41_2022112801.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29022/mod_game_moodle42_2023042500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29333/mod_mediagallery_moodle41_2023060200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28807/mod_attendance_moodle41_2023020107.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28247/mod_offlinequiz_moodle40_2022111501.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29322/mod_coursecertificate_moodle42_2023053000.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29306/mod_hvp_moodle42_2023052600.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29419/mod_hvp_moodle42_2023061200.zip && unzip -o d.zip \
     # && curl -o d.zip https://moodle.org/plugins/download.php/28449/mod_quizgame_moodle42_2022112200.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/blocks
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28963/block_checklist_moodle42_2023041400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28052/block_completion_progress_moodle41_2022112800.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29216/block_stash_moodle42_2023051500.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29418/block_stash_moodle42_2023061200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29335/block_xp_moodle42_2023042403.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29329/block_game_moodle41_2023053101.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/13802/block_ranking_moodle41_2017050300.zip && unzip -o d.zip \
