@@ -22,7 +22,7 @@ fi
 
 
 OPERATION=$1
-RELEASE_VERSION="moodle4.1.3-php8.1-release001-deploy$2"
+RELEASE_VERSION="$2"
 FULL_IMAGE_NAME="registry.gitlab.com/zl-installs/zl-ava-installs/moodle:$RELEASE_VERSION"
 # FULL_IMAGE_NAME="kelsoncm/moodle:$RELEASE_VERSION"
 
