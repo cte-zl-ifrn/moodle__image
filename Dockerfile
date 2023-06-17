@@ -1,36 +1,30 @@
-FROM moodlehq/moodle-php-apache:8.1-bullseye
+FROM php:8.1.20-apache-bullseye
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV ACCEPT_EULA Y
-ENV MOODLE_VERSION 4.1.4
+ARG DEBIAN_FRONTEND=noninteractive
+ARG MOODLE_VERSION=4.1.4
 
-WORKDIR /var/www
+ADD build/php-extensions.sh /tmp/build/php-extensions.sh
+ADD build/locale.gen /etc/locale.gen
+RUN    apt update \
+    && apt upgrade -y \
+    && apt-get install -y cron poppler-utils graphviz aspell python3 git vim \
+    && rm -rf /var/lib/apt/lists/* \
+    && /tmp/build/php-extensions.sh \
+    && a2enmod headers \
+    && chmod 777 /tmp \
+    && chmod +t /tmp
 
-RUN apt update && apt upgrade -y && apt-get install -y cron poppler-utils graphviz aspell python3
+RUN    curl -L https://github.com/moodle/moodle/archive/refs/tags/v$MOODLE_VERSION.tar.gz | tar -zx --strip-components=1 \
+    && chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html \
+    && mkdir /var/moodledata \
+    && chown -R www-data:www-data /var/moodledata
 
-RUN    curl -L -o v$MOODLE_VERSION.tar.gz https://github.com/moodle/moodle/archive/refs/tags/v$MOODLE_VERSION.tar.gz \
-    && tar -zxf v$MOODLE_VERSION.tar.gz \
-    && rm v$MOODLE_VERSION.tar.gz \
-    && rm -rf /var/www/html/ \
-    && mv moodle-$MOODLE_VERSION html \
-    && chown -R www-data:www-data /var/www \
-    && chmod -R 755 /var/www
+ADD src/ini/ /usr/local/etc/php/conf.d/
+ADD src/shell/cron-crontab /var/spool/cron/crontabs/www-data
+ADD src/shell/ /usr/local/bin/
 
-RUN    mkdir /var/moodledata  && chown -R www-data:www-data /var/moodledata \
-    && mkdir /var/custom_logs && chown -R www-data:www-data /var/custom_logs
-
-ADD --chown=www-data:www-data src/php/* /var/www/html/
-ADD --chown=www-data:www-data src/php/deploy/* /var/www/html/deploy/
-ADD src/shell/* /usr/local/bin/
-ADD src/shell/crontab /var/spool/cron/crontabs/root
-
-USER root
-COPY php-extra.ini /usr/local/etc/php/conf.d/extra.ini
-COPY locale.gen /etc/locale.gen
-RUN locale-gen && \
-    dpkg-reconfigure locales && \
-    apt install -y vim && \
-    a2enmod headers
+ADD --chown=www-data:www-data src/php/ /var/www/html/
 
 USER www-data
 
@@ -87,6 +81,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangep
     && curl -o d.zip https://moodle.org/plugins/download.php/29222/tool_uploadenrolmentmethods_moodle41_2023051500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28084/tool_migratehvp2h5p_moodle41_2022112900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29223/tool_redirects_moodle41_2023051100.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29045/tool_opcache_moodle41_2023010500.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/availability/condition
@@ -196,11 +191,8 @@ RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/re
 # # line 1024 of /lib/formslib.php: call to user_editadvanced_form->definition_after_data()
 # # line 360 of /user/editadvanced.php: call to moodleform->display()
 
-
-USER root
-RUN cp /var/spool/cron/crontabs/root /var/spool/cron/crontabs/www-data
-
+# USER root
 USER www-data
 WORKDIR /var/www/html
 EXPOSE 80
-# ENTRYPOINT ["docker-php-entrypoint"]
+ENTRYPOINT ["docker-php-entrypoint"]

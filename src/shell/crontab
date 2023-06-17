@@ -1,1 +1,0 @@
-* * * * * /usr/local/bin/php /var/www/html/admin/cli/cron.php >> /var/custom_logs/cron.log
