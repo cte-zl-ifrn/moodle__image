@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 source /var/dockers/_/functions
 
+docker compose pull ava
 /var/dockers/_/$SERVICE_NAME/down
 /var/dockers/_/$SERVICE_NAME/up
