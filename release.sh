@@ -23,7 +23,7 @@ fi
 
 OPERATION=$1
 RELEASE_VERSION="$2"
-FULL_IMAGE_NAME="registry.gitlab.com/zl-installs/zl-ava-installs/moodle:$RELEASE_VERSION"
+FULL_IMAGE_NAME="registry.gitlab.com/cte-infra/moodle:$RELEASE_VERSION"
 # FULL_IMAGE_NAME="kelsoncm/moodle:$RELEASE_VERSION"
 
 echo "$OPERATION $FULL_IMAGE_NAME"

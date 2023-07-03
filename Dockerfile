@@ -5,6 +5,7 @@ ARG MOODLE_VERSION=4.1.4
 
 ADD build/php-extensions.sh /tmp/build/php-extensions.sh
 ADD build/locale.gen /etc/locale.gen
+
 RUN    apt update \
     && apt upgrade -y \
     && apt-get install -y cron poppler-utils graphviz aspell python3 git vim \
@@ -42,7 +43,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28962/mod_checklist_mo
 
 WORKDIR /var/www/html/blocks
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28963/block_checklist_moodle42_2023041400.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28052/block_completion_progress_moodle41_2022112800.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29544/block_completion_progress_moodle42_2023063000.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29418/block_stash_moodle42_2023061200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29335/block_xp_moodle42_2023042403.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29329/block_game_moodle41_2023053101.zip && unzip -o d.zip \
@@ -97,7 +98,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/22786/availability_xp_
     && curl -o d.zip https://moodle.org/plugins/download.php/11311/availability_badge_moodle31_2016020200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/16249/availability_enrol_moodle34_2018030900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/24334/availability_sectioncompleted_moodle40_2021052800.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/16001/availability_maxviews_moodle311_2018020600.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29517/availability_maxviews_moodle42_2023062700.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/23733/availability_quizquestion_moodle311_2021031700.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/22196/availability_courseprogress_moodle310_2020070100.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/26564/availability_game_moodle40_2022042610.zip && unzip -o d.zip \
@@ -154,8 +155,8 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/5944/profilefield_cpf_
 
 WORKDIR /var/www/html/
 
-RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.029         | tar -zx && mv moodle__local_suap-* local/suap \
-    && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.022          | tar -zx && mv moodle__auth_suap-* auth/suap \
+RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.030         | tar -zx && mv moodle__local_suap-* local/suap \
+    && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.023          | tar -zx && mv moodle__auth_suap-* auth/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r1       | tar -zx && mv moodle__theme_moove-* theme/moove
 
