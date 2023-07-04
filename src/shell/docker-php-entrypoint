@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 set -e
-echo "KELSON"
 if [ "$1" == "" ] || [ "$@" == "apache2-foreground" ]; then
     echo "Starting Moodle"
     if [ "{$CFG_ADMINUSER}" != "" ]; then
