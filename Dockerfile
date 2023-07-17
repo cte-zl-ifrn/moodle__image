@@ -35,7 +35,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28962/mod_checklist_mo
     && curl -o d.zip https://moodle.org/plugins/download.php/29022/mod_game_moodle42_2023042500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29333/mod_mediagallery_moodle41_2023060200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28807/mod_attendance_moodle41_2023020107.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28247/mod_offlinequiz_moodle40_2022111501.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29607/mod_offlinequiz_moodle41_2023070701.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29322/mod_coursecertificate_moodle42_2023053000.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29419/mod_hvp_moodle42_2023061200.zip && unzip -o d.zip \
     # && curl -o d.zip https://moodle.org/plugins/download.php/28449/mod_quizgame_moodle42_2022112200.zip && unzip -o d.zip \
@@ -74,7 +74,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/21447/enrol_xp_moodle4
 WORKDIR /var/www/html/admin/tool
 RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangeprofilefields_moodle40_2022042900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28188/tool_clearbackupfiles_moodle41_2022121200.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28875/tool_coursearchiver_moodle42_2023040400.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29622/tool_coursearchiver_moodle42_2023071200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/18375/tool_hidecourses_moodle41_2018112800.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/23370/tool_ribbons_moodle310_2021020400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29321/tool_certificate_moodle42_2023053000.zip && unzip -o d.zip \
