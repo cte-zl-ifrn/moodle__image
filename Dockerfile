@@ -139,8 +139,9 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28966/gradeexport_chec
 
 WORKDIR /var/www/html/user/profile/field
 RUN curl -o d.zip https://moodle.org/plugins/download.php/5944/profilefield_cpf_moodle310_2014041700.zip && unzip -o d.zip \
-    && sed -i 's/\$cpf{\$c}/$cpf[$c]/g' /var/www/html/user/profile/field/cpf/field.class.php \
-    && curl -o d.zip https://moodle.org/plugins/download.php/27125/profilefield_autocomplete_moodle311_2022071900.zip && unzip -o d.zip \
+    && sed -i 's/\$cpf{\$c}/$cpf[$c]/g' /var/www/html/user/profile/field/cpf/field.class.php
+
+RUN curl -o d.zip https://moodle.org/plugins/download.php/27125/profilefield_autocomplete_moodle311_2022071900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/26013/profilefield_timestamp_moodle311_2022021700.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/22197/profilefield_masked_moodle310_2020080800.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/13216/profilefield_dynamicmultiselect_moodle32_2017021201.zip && unzip -o d.zip \
