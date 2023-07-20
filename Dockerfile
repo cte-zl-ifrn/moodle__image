@@ -2,6 +2,7 @@ FROM php:8.1.20-apache-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG MOODLE_VERSION=4.1.4
+# ARG MOODLE_VERSION=4.2.1
 
 ADD build/php-extensions.sh /tmp/build/php-extensions.sh
 ADD build/locale.gen /etc/locale.gen
