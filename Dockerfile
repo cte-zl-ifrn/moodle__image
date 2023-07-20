@@ -1,4 +1,4 @@
-FROM php:8.1.20-apache-bullseye
+FROM php:8.1.21-apache-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG MOODLE_VERSION=4.1.4
