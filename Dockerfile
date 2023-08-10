@@ -68,7 +68,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/9418/atto_chemistry_mo
     && rm d.zip
 
 WORKDIR /var/www/html/lib/editor/tiny/plugins
-RUN    curl -o d.zip https://moodle.org/plugins/download.php/29002/tiny_preview_moodle42_2023042400.zip   && unzip -o d.zip \
+RUN    curl -o d.zip https://moodle.org/plugins/download.php/29003/tiny_preview_moodle41_2023010103.zip   && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29582/tiny_fontcolor_moodle42_2023070600.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28903/tiny_c4l_moodle42_2023032901.zip       && unzip -o d.zip \
     && rm d.zip
