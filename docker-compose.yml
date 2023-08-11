@@ -30,7 +30,7 @@ services:
       start_period: 10s
 
   ava:
-    image: registry.gitlab.com/cte-infra/moodle:011
+    image: registry.gitlab.com/cte-infra/moodle:012
     build: .
     ports:
       - '7080:80'

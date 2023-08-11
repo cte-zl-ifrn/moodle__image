@@ -165,7 +165,7 @@ WORKDIR /var/www/html/
 
 RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.037         | tar -zx && mv moodle__local_suap-* local/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__enrol_suap/tar.gz/refs/tags/1.0.001         | tar -zx && mv moodle__enrol_suap-* enrol/suap \
-    && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.024          | tar -zx && mv moodle__auth_suap-* auth/suap \
+    && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.025          | tar -zx && mv moodle__auth_suap-* auth/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r1       | tar -zx && mv moodle__theme_moove-* theme/moove
 
@@ -182,24 +182,6 @@ RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/re
 # https://moodle.org/plugins/download.php/12250/availability_week_moodle31_2016060100.zip
 # https://moodle.org/plugins/download.php/23689/availability_enroldate_moodle41_2020061500.zip
 # https://moodle.org/plugins/download.php/15953/availability_dataformcontent_moodle33_2017051502.zip
-
-
-# # profile_field_dynamicmenu::__construct() must support $fielddata as the third argument and pass it to the parent constructor
-# # line 103 of /user/profile/lib.php: call to debugging()
-# # line 53 of /user/profile/field/dynamicmenu/field.class.php: call to profile_field_base->__construct()
-# # line 613 of /user/profile/lib.php: call to profile_field_dynamicmenu->__construct()
-# # line 684 of /user/profile/lib.php: call to profile_get_user_fields_with_data()
-# # line 242 of /user/editadvanced_form.php: call to profile_definition_after_data()
-# # line 1024 of /lib/formslib.php: call to user_editadvanced_form->definition_after_data()
-# # line 360 of /user/editadvanced.php: call to moodleform->display()
-# # profile_field_dynamicmultiselect::__construct() must support $fielddata as the third argument and pass it to the parent constructor
-# # line 103 of /user/profile/lib.php: call to debugging()
-# # line 55 of /user/profile/field/dynamicmultiselect/field.class.php: call to profile_field_base->__construct()
-# # line 613 of /user/profile/lib.php: call to profile_field_dynamicmultiselect->__construct()
-# # line 684 of /user/profile/lib.php: call to profile_get_user_fields_with_data()
-# # line 242 of /user/editadvanced_form.php: call to profile_definition_after_data()
-# # line 1024 of /lib/formslib.php: call to user_editadvanced_form->definition_after_data()
-# # line 360 of /user/editadvanced.php: call to moodleform->display()
 
 # USER root
 USER www-data
