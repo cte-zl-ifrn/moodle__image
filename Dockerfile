@@ -1,7 +1,7 @@
 FROM php:8.1.21-apache-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG MOODLE_VERSION=4.1.4
+ARG MOODLE_VERSION=4.1.5
 
 ADD build/php-extensions.sh /tmp/build/php-extensions.sh
 ADD build/locale.gen /etc/locale.gen
@@ -70,7 +70,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/9418/atto_chemistry_mo
 WORKDIR /var/www/html/lib/editor/tiny/plugins
 RUN    curl -o d.zip https://moodle.org/plugins/download.php/29003/tiny_preview_moodle41_2023010103.zip   && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29582/tiny_fontcolor_moodle42_2023070600.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/28903/tiny_c4l_moodle42_2023032901.zip       && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29769/tiny_c4l_moodle42_2023081200.zip       && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/enrol
@@ -144,7 +144,6 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28966/gradeexport_chec
 
 WORKDIR /var/www/html/user/profile/field
 RUN curl -o d.zip https://moodle.org/plugins/download.php/5944/profilefield_cpf_moodle310_2014041700.zip && unzip -o d.zip \
-    && sed -i 's/\$cpf{\$c}/$cpf[$c]/g' /var/www/html/user/profile/field/cpf/field.class.php \
     && rm d.zip
 
 RUN curl -o d.zip https://moodle.org/plugins/download.php/27125/profilefield_autocomplete_moodle311_2022071900.zip && unzip -o d.zip \
@@ -169,19 +168,20 @@ RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/re
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r1       | tar -zx && mv moodle__theme_moove-* theme/moove
 
+# Removeds:
 # theme_aberto v3.11 2021052101
 # theme_ead v38-r1 2020072901
 # theme_ledor  2020081301
-# https://moodle.org/plugins/download.php/28189/mod_bigbluebuttonbn_moodle311_2021101011.zip
-# https://moodle.org/plugins/download.php/28251/mod_hsuforum_moodle40_2022122100.zip
-# https://moodle.org/plugins/download.php/27564/mod_journal_moodle40_2022091600.zip
-# https://moodle.org/plugins/download.php/26900/mod_questionnaire_moodle40_2021062301.zip
-# https://moodle.org/plugins/download.php/27665/mod_vpl_moodle40_2022093012.zip
-# https://moodle.org/plugins/download.php/24512/filter_h5p_moodle311_2021062200.zip
-# https://moodle.org/plugins/download.php/17146/availability_days_moodle35_2016060100.zip
-# https://moodle.org/plugins/download.php/12250/availability_week_moodle31_2016060100.zip
-# https://moodle.org/plugins/download.php/23689/availability_enroldate_moodle41_2020061500.zip
-# https://moodle.org/plugins/download.php/15953/availability_dataformcontent_moodle33_2017051502.zip
+# mod_bigbluebuttonbn
+# mod_hsuforum
+# mod_journal
+# mod_questionnaire
+# mod_vpl
+# filter_h5p
+# availability_days
+# availability_week
+# availability_enroldate
+# availability_dataformcontent
 
 
 # # profile_field_dynamicmenu::__construct() must support $fielddata as the third argument and pass it to the parent constructor
