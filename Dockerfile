@@ -144,6 +144,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28966/gradeexport_chec
 
 WORKDIR /var/www/html/user/profile/field
 RUN curl -o d.zip https://moodle.org/plugins/download.php/5944/profilefield_cpf_moodle310_2014041700.zip && unzip -o d.zip \
+    && sed -i 's/\$cpf{\$c}/$cpf[$c]/g' /var/www/html/user/profile/field/cpf/field.class.php \
     && rm d.zip
 
 RUN curl -o d.zip https://moodle.org/plugins/download.php/27125/profilefield_autocomplete_moodle311_2022071900.zip && unzip -o d.zip \
