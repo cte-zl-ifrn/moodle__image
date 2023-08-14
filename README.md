@@ -34,3 +34,15 @@ docker compose up
 curl -X POST -H "Authentication: Token 1" -d ./moodle__local_suap/sync_up_enrolments_sample.json http:/localhost:7080/local/suap/sync_up_enrolments.php 
 ```
 
+# Como adicionar o profile field 'cpf'
+
+## additionalhtmlhead
+```html
+<script src='http://ava/lib/javascript.php/1692023308/lib/jquery/jquery-3.6.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js'></script>
+```
+
+## additionalhtmlfooter
+```html
+<script>jQuery("#profilefield_cpf").mask("999.999.999-99");</script>
+```
