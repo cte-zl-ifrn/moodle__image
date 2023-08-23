@@ -32,7 +32,7 @@ USER www-data
 WORKDIR /var/www/html/mod
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28962/mod_checklist_moodle42_2023041400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29393/mod_customcert_moodle41_2022112801.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29022/mod_game_moodle42_2023042500.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29798/mod_game_moodle42_2023081606.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29333/mod_mediagallery_moodle41_2023060200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28807/mod_attendance_moodle41_2023020107.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29607/mod_offlinequiz_moodle41_2023070701.zip && unzip -o d.zip \
