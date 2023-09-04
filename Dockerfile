@@ -80,7 +80,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/21447/enrol_xp_moodle4
 WORKDIR /var/www/html/admin/tool
 RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangeprofilefields_moodle40_2022042900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28188/tool_clearbackupfiles_moodle41_2022121200.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29622/tool_coursearchiver_moodle42_2023071200.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29845/tool_coursearchiver_moodle42_2023083001.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/18375/tool_hidecourses_moodle41_2018112800.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/23370/tool_ribbons_moodle310_2021020400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29321/tool_certificate_moodle42_2023053000.zip && unzip -o d.zip \
@@ -93,7 +93,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangep
 
 WORKDIR /var/www/html/availability/condition
 RUN curl -o d.zip https://moodle.org/plugins/download.php/22786/availability_xp_moodle41_2020110900.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/26314/availability_coursecompleted_moodle41_2022040400.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29868/availability_coursecompleted_moodle42_2023090200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28755/availability_role_moodle41_2023010500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29000/availability_language_moodle42_2023042300.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/24360/availability_mobileapp_moodle311_2021060200.zip && unzip -o d.zip \
@@ -167,7 +167,7 @@ RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/re
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__enrol_suap/tar.gz/refs/tags/1.0.001         | tar -zx && mv moodle__enrol_suap-* enrol/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.025          | tar -zx && mv moodle__auth_suap-* auth/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance \
-    && curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r2       | tar -zx && mv moodle__theme_moove-* theme/moove
+    && curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r3       | tar -zx && mv moodle__theme_moove-* theme/moove
 
 # Removeds:
 # theme_aberto v3.11 2021052101
