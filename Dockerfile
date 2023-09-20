@@ -70,7 +70,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/9418/atto_chemistry_mo
 WORKDIR /var/www/html/lib/editor/tiny/plugins
 RUN    curl -o d.zip https://moodle.org/plugins/download.php/29003/tiny_preview_moodle41_2023010103.zip   && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29582/tiny_fontcolor_moodle42_2023070600.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29769/tiny_c4l_moodle42_2023081200.zip       && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29979/tiny_c4l_moodle42_2023091800.zip       && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/enrol
@@ -80,7 +80,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/21447/enrol_xp_moodle4
 WORKDIR /var/www/html/admin/tool
 RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangeprofilefields_moodle40_2022042900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28188/tool_clearbackupfiles_moodle41_2022121200.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29845/tool_coursearchiver_moodle42_2023083001.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29885/tool_coursearchiver_moodle42_2023090500.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/18375/tool_hidecourses_moodle41_2018112800.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/23370/tool_ribbons_moodle310_2021020400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29321/tool_certificate_moodle42_2023053000.zip && unzip -o d.zip \
@@ -89,6 +89,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangep
     && curl -o d.zip https://moodle.org/plugins/download.php/28084/tool_migratehvp2h5p_moodle41_2022112900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29223/tool_redirects_moodle41_2023051100.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29045/tool_opcache_moodle41_2023010500.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29063/tool_userdebug_moodle42_2023042700.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/availability/condition
@@ -163,11 +164,11 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/27125/profilefield_aut
 
 WORKDIR /var/www/html/
 
-RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.037         | tar -zx && mv moodle__local_suap-* local/suap \
+RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.049t        | tar -zx && mv moodle__local_suap-* local/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__enrol_suap/tar.gz/refs/tags/1.0.001         | tar -zx && mv moodle__enrol_suap-* enrol/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.025          | tar -zx && mv moodle__auth_suap-* auth/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance \
-    && curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r3       | tar -zx && mv moodle__theme_moove-* theme/moove
+    && curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r4t      | tar -zx && mv moodle__theme_moove-* theme/moove
 
 # Removeds:
 # theme_aberto v3.11 2021052101
