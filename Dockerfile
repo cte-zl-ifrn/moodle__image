@@ -164,7 +164,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/27125/profilefield_aut
 
 WORKDIR /var/www/html/
 
-RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.051t        | tar -zx && mv moodle__local_suap-* local/suap \
+RUN    curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.052t        | tar -zx && mv moodle__local_suap-* local/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__enrol_suap/tar.gz/refs/tags/1.0.001         | tar -zx && mv moodle__enrol_suap-* enrol/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.025          | tar -zx && mv moodle__auth_suap-* auth/suap \
     && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0 | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance \
