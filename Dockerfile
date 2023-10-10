@@ -1,7 +1,7 @@
 FROM php:8.1.21-apache-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG MOODLE_VERSION=4.1.5
+ARG MOODLE_VERSION=4.1.6
 
 ADD build/php-extensions.sh /tmp/build/php-extensions.sh
 ADD build/locale.gen /etc/locale.gen
@@ -30,7 +30,7 @@ ADD --chown=www-data:www-data src/php/ /var/www/html/
 USER www-data
 
 WORKDIR /var/www/html/mod
-RUN curl -o d.zip https://moodle.org/plugins/download.php/28962/mod_checklist_moodle42_2023041400.zip && unzip -o d.zip \
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30072/mod_checklist_moodle43_2023100200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29393/mod_customcert_moodle41_2022112801.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29798/mod_game_moodle42_2023081606.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29333/mod_mediagallery_moodle41_2023060200.zip && unzip -o d.zip \
@@ -42,7 +42,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28962/mod_checklist_mo
     && rm d.zip
 
 WORKDIR /var/www/html/blocks
-RUN curl -o d.zip https://moodle.org/plugins/download.php/28963/block_checklist_moodle42_2023041400.zip && unzip -o d.zip \
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30074/block_checklist_moodle43_2023100200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29544/block_completion_progress_moodle42_2023063000.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29418/block_stash_moodle42_2023061200.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29335/block_xp_moodle42_2023042403.zip && unzip -o d.zip \
@@ -69,8 +69,8 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/9418/atto_chemistry_mo
 
 WORKDIR /var/www/html/lib/editor/tiny/plugins
 RUN    curl -o d.zip https://moodle.org/plugins/download.php/29003/tiny_preview_moodle41_2023010103.zip   && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29582/tiny_fontcolor_moodle42_2023070600.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29979/tiny_c4l_moodle42_2023091800.zip       && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/30053/tiny_fontcolor_moodle42_2023100300.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/29979/tiny_c4l_moodle43_2023091800.zip       && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/enrol
@@ -80,7 +80,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/21447/enrol_xp_moodle4
 WORKDIR /var/www/html/admin/tool
 RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangeprofilefields_moodle40_2022042900.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/28188/tool_clearbackupfiles_moodle41_2022121200.zip && unzip -o d.zip \
-    && curl -o d.zip https://moodle.org/plugins/download.php/29885/tool_coursearchiver_moodle42_2023090500.zip && unzip -o d.zip \
+    && curl -o d.zip https://moodle.org/plugins/download.php/30111/tool_coursearchiver_moodle43_2023100400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/18375/tool_hidecourses_moodle41_2018112800.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/23370/tool_ribbons_moodle310_2021020400.zip && unzip -o d.zip \
     && curl -o d.zip https://moodle.org/plugins/download.php/29321/tool_certificate_moodle42_2023053000.zip && unzip -o d.zip \
@@ -140,7 +140,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/21216/local_analytics_
     && rm d.zip
 
 WORKDIR /var/www/html/grade/export
-RUN curl -o d.zip https://moodle.org/plugins/download.php/28966/gradeexport_checklist_moodle42_2023041400.zip && unzip -o d.zip \
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30077/gradeexport_checklist_moodle43_2023100200.zip && unzip -o d.zip \
     && rm d.zip
 
 WORKDIR /var/www/html/user/profile/field
