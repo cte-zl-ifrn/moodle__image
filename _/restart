@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-source /var/dockers/_/functions
-
-cd /var/dockers/
-docker compose pull
-/var/dockers/_/down $@
-/var/dockers/_/up -d $@

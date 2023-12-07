@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-source /var/dockers/_/functions
-
-docker compose down --remove-orphans $@

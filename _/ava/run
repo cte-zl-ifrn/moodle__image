@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-source /var/dockers/_/functions
-
-docker compose run $SERVICE_NAME $@
