@@ -1,49 +1,38 @@
 services:
+    cache:
+        image: redis:7.2-alpine
+        healthcheck:
+            test: ["CMD", "redis-cli", "ping"]
+            interval: 3s
+            timeout: 3s
+            retries: 3
+            start_period: 10s
 
-  cache:
-    image: redis:7.0.2-alpine
-    ports:
-      - '6379:6379'
-    env_file:
-      - .env
-    volumes:
-      - "./volumes/cache_data:/data"
-    healthcheck:
-      test: [ "CMD", "redis-cli", "ping" ]
-      interval: 3s
-      timeout: 3s
-      retries: 3
-      start_period: 10s
+    db:
+        image: postgres:16-alpine
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=changeme
+        volumes:
+            # init settings, executed only on deploy
+            - "./src/postgres/:/docker-entrypoint-initdb.d"
+            # database data
+            - "~/projetos/IFRN/ava/volumes/db_data:/var/lib/postgresql/data"
+        healthcheck:
+            test: ["CMD", "pg_isready", "-U", "postgres"]
+            interval: 3s
+            timeout: 3s
+            retries: 3
+            start_period: 10s
 
-  db:
-    image: postgres:15.1-alpine
-    restart: always
-    env_file:
-      - .env
-    volumes:
-      - "./volumes/db:/var/lib/postgresql/data"
-    healthcheck:
-      test: [ "CMD", "pg_isready", "-U", "postgres" ]
-      interval: 3s
-      timeout: 3s
-      retries: 3
-      start_period: 10s
-
-  ava:
-    image: registry.gitlab.com/cte-infra/moodle:021
-    build: .
-    ports:
-      - '7080:80'
-    env_file:
-      - .env
-    volumes:
-      # Source
-      # - '../moodle__image/src/php/config.php:/var/www/html/config.php'
-      # - '../moodle__local_suap:/var/www/html/local/suap'
-      # - '../moodle__block_suapattendance:/var/www/html/blocks/suapattendance'
-
-      # Data
-      - './volumes/ava/moodledata:/var/moodledata'
-    depends_on:
-      db:
-        condition: service_healthy
+    nginx:
+        image: nginx:1.23.3-alpine
+        volumes:
+            # confs
+            - ./nginx/conf.d:/etc/nginx/conf.d
+            - ./nginx/error_pages:/usr/share/nginx/error_pages
+        ports:
+            - 80:80
+        depends_on:
+            - painel
+            # - ava
