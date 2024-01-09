@@ -2,7 +2,7 @@ FROM php:8.1.26-apache-bullseye
 # FROM php:8.2.13-apache-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG MOODLE_VERSION=4.1.6
+ARG MOODLE_VERSION=4.1.8
 
 ADD build/php-extensions.sh /tmp/build/php-extensions.sh
 ADD build/locale.gen /etc/locale.gen
@@ -34,9 +34,9 @@ WORKDIR /var/www/html/mod
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28807/mod_attendance_moodle41_2023020107.zip        && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/29393/mod_customcert_moodle41_2022112801.zip        && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30072/mod_checklist_moodle43_2023100200.zip         && unzip -o d.zip && rm d.zip
-RUN curl -o d.zip https://moodle.org/plugins/download.php/30160/mod_coursecertificate_moodle43_2023101000.zip && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30759/mod_coursecertificate_moodle43_2023122800.zip && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/29333/mod_mediagallery_moodle41_2023060200.zip      && unzip -o d.zip && rm d.zip
-RUN curl -o d.zip https://moodle.org/plugins/download.php/29419/mod_hvp_moodle42_2023061200.zip               && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30739/mod_hvp_moodle43_2023122500.zip               && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30531/mod_game_moodle43_2023111601.zip              && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30601/mod_offlinequiz_moodle41_2023070702.zip       && unzip -o d.zip && rm d.zip
 # RUN curl -o d.zip https://moodle.org/plugins/download.php/28449/mod_quizgame_moodle42_2022112200.zip          && unzip -o d.zip && rm d.zip
@@ -45,7 +45,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/30601/mod_offlinequiz_
 WORKDIR /var/www/html/blocks
 RUN curl -o d.zip https://moodle.org/plugins/download.php/13802/block_ranking_moodle41_2017050300.zip             && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/29329/block_game_moodle41_2023053101.zip                && unzip -o d.zip && rm d.zip
-RUN curl -o d.zip https://moodle.org/plugins/download.php/29544/block_completion_progress_moodle42_2023063000.zip && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30405/block_completion_progress_moodle43_2023110100.zip && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30074/block_checklist_moodle43_2023100200.zip           && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30306/block_stash_moodle43_2023102000.zip               && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30581/block_xp_moodle43_2023100803.zip                  && unzip -o d.zip && rm d.zip
@@ -65,9 +65,9 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/9418/atto_chemistry_mo
 RUN curl -o d.zip https://moodle.org/plugins/download.php/9419/atto_computing_moodle30_2015092900.zip       && unzip -o d.zip && rm d.zip
 
 WORKDIR /var/www/html/lib/editor/tiny/plugins
-RUN curl -o d.zip https://moodle.org/plugins/download.php/29003/tiny_preview_moodle41_2023010103.zip   && unzip -o d.zip && rm d.zip
-RUN curl -o d.zip https://moodle.org/plugins/download.php/30053/tiny_fontcolor_moodle42_2023100300.zip && unzip -o d.zip && rm d.zip
-RUN curl -o d.zip https://moodle.org/plugins/download.php/30610/tiny_c4l_moodle43_2023120200.zip       && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30652/tiny_preview_moodle41_2023010104.zip   && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30131/tiny_fontcolor_moodle43_2023101000.zip && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30645/tiny_c4l_moodle43_2023120800.zip       && unzip -o d.zip && rm d.zip
 
 WORKDIR /var/www/html/enrol
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30441/enrol_xp_moodle43_2023110700.zip && unzip -o d.zip && rm d.zip
@@ -78,11 +78,11 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/23370/tool_ribbons_moo
 RUN curl -o d.zip https://moodle.org/plugins/download.php/26575/tool_bulkchangeprofilefields_moodle40_2022042900.zip && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28084/tool_migratehvp2h5p_moodle41_2022112900.zip          && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28188/tool_clearbackupfiles_moodle41_2022121200.zip        && unzip -o d.zip && rm d.zip
-RUN curl -o d.zip https://moodle.org/plugins/download.php/29063/tool_userdebug_moodle42_2023042700.zip               && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30832/tool_userdebug_moodle43_2024010900.zip               && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/29222/tool_uploadenrolmentmethods_moodle41_2023051500.zip  && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/29223/tool_redirects_moodle41_2023051100.zip               && unzip -o d.zip && rm d.zip
-RUN curl -o d.zip https://moodle.org/plugins/download.php/30111/tool_coursearchiver_moodle43_2023100400.zip          && unzip -o d.zip && rm d.zip
-RUN curl -o d.zip https://moodle.org/plugins/download.php/30157/tool_certificate_moodle43_2023101000.zip             && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30729/tool_coursearchiver_moodle43_2023122100.zip          && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30758/tool_certificate_moodle43_2023122800.zip             && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30161/tool_datewatch_moodle43_2023101000.zip               && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30230/tool_opcache_moodle41_2023010501.zip                 && unzip -o d.zip && rm d.zip
 
@@ -94,7 +94,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/30198/availability_lan
 RUN curl -o d.zip https://moodle.org/plugins/download.php/24360/availability_mobileapp_moodle311_2021060200.zip       && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30213/availability_cohort_moodle41_2023010501.zip           && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30214/availability_password_moodle41_2023010501.zip         && unzip -o d.zip && rm d.zip
-RUN curl -o d.zip https://moodle.org/plugins/download.php/16615/availability_stash_moodle41_2018050901.zip            && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30751/availability_stash_moodle43_2023122800.zip            && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/29236/availability_othercompleted_moodle42_2023050310.zip   && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/11311/availability_badge_moodle31_2016020200.zip            && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/16249/availability_enrol_moodle34_2018030900.zip            && unzip -o d.zip && rm d.zip
@@ -104,13 +104,13 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/23733/availability_qui
 RUN curl -o d.zip https://moodle.org/plugins/download.php/22196/availability_courseprogress_moodle310_2020070100.zip  && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/26564/availability_game_moodle40_2022042610.zip             && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/26392/availability_user_moodle41_2022040801.zip             && unzip -o d.zip && rm d.zip
-RUN curl -o d.zip https://moodle.org/plugins/download.php/30232/availability_relativedate_moodle43_2023101500.zip     && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30644/availability_relativedate_moodle43_2023120800.zip     && unzip -o d.zip && rm d.zip
 
 WORKDIR /var/www/html/question/format/
 RUN curl -o d.zip https://moodle.org/plugins/download.php/27954/qformat_h5p_moodle41_2020071510.zip && unzip -o d.zip && rm d.zip
 
 WORKDIR /var/www/html/report
-RUN curl -o d.zip https://moodle.org/plugins/download.php/28589/report_extendedlog_moodle41_2023022000.zip    && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/30818/report_extendedlog_moodle43_2024010800.zip    && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/30535/report_overviewstats_moodle43_2023112100.zip && unzip -o d.zip && rm d.zip
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28315/report_coursesize_moodle41_2023010900.zip     && unzip -o d.zip && rm d.zip
 
