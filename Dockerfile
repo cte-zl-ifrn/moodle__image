@@ -1,4 +1,4 @@
-FROM php:8.1.26-apache-bullseye
+FROM php:8.1.27-apache-bullseye
 # FROM php:8.2.13-apache-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -10,7 +10,6 @@ ADD build/locale.gen /etc/locale.gen
 RUN    apt update \
     && apt upgrade -y \
     && apt-get install -y cron poppler-utils graphviz aspell python3 vim \
-    && rm -rf /var/lib/apt/lists/*  \
     && /tmp/build/php-extensions.sh \
     && a2enmod headers \
     && chmod 777 /tmp \
@@ -150,25 +149,17 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/29142/profilefield_con
 WORKDIR /var/www/html/
 
 RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.053t         | tar -zx && mv moodle__local_suap-* local/suap
+RUN curl https://codeload.github.com/plaforedu/pnp/tar.gz/refs/tags/1.0.2                             | tar -zx && mv moodle__local_pnp-* local/pnp
 RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__enrol_suap/tar.gz/refs/tags/1.0.001          | tar -zx && mv moodle__enrol_suap-* enrol/suap
 RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.025           | tar -zx && mv moodle__auth_suap-* auth/suap
 RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0  | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance
 RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r4t       | tar -zx && mv moodle__theme_moove-* theme/moove
 
 # Removeds:
-# theme_aberto v3.11 2021052101
-# theme_ead v38-r1 2020072901
-# theme_ledor  2020081301
-# mod_bigbluebuttonbn
-# mod_hsuforum
-# mod_journal
-# mod_questionnaire
-# mod_vpl
+# theme_aberto, theme_ead, theme_ledor 
+# mod_bigbluebuttonbn, mod_hsuforum, mod_journal, mod_questionnaire, mod_vpl
 # filter_h5p
-# availability_days
-# availability_week
-# availability_enroldate
-# availability_dataformcontent
+# availability_days, availability_week, availability_enroldate, availability_dataformcontent
 
 ADD build/extra.ini /usr/local/etc/php/conf.d/extra.ini
 
