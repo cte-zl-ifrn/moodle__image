@@ -149,7 +149,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/29142/profilefield_con
 WORKDIR /var/www/html/
 
 RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.053t         | tar -zx && mv moodle__local_suap-* local/suap
-RUN curl https://codeload.github.com/plaforedu/pnp/tar.gz/refs/tags/1.0.2                             | tar -zx && mv pnp-* local/pnp
+RUN curl https://codeload.github.com/plaforedu/pnp/tar.gz/refs/tags/1.0.4                             | tar -zx && mv pnp-* local/pnp
 RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__enrol_suap/tar.gz/refs/tags/1.0.001          | tar -zx && mv moodle__enrol_suap-* enrol/suap
 RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.025           | tar -zx && mv moodle__auth_suap-* auth/suap
 RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0  | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance
