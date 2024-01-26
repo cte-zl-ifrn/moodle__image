@@ -32,7 +32,7 @@ USER www-data
 WORKDIR /var/www/html/mod
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28807/mod_attendance_moodle41_2023020107.zip        && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/29393/mod_customcert_moodle41_2022112801.zip        && unzip -o d.zip && rm d.zip \
- && curl -o d.zip https://moodle.org/plugins/download.php/30072/mod_checklist_moodle43_2023100200.zip         && unzip -o d.zip && rm d.zip \
+ && curl -o d.zip https://moodle.org/plugins/download.php/30894/mod_checklist_moodle43_2024012000.zip         && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/30759/mod_coursecertificate_moodle43_2023122800.zip && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/29333/mod_mediagallery_moodle41_2023060200.zip      && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/30739/mod_hvp_moodle43_2023122500.zip               && unzip -o d.zip && rm d.zip \
@@ -45,7 +45,7 @@ WORKDIR /var/www/html/blocks
 RUN curl -o d.zip https://moodle.org/plugins/download.php/13802/block_ranking_moodle41_2017050300.zip             && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/29329/block_game_moodle41_2023053101.zip                && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/30405/block_completion_progress_moodle43_2023110100.zip && unzip -o d.zip && rm d.zip \
- && curl -o d.zip https://moodle.org/plugins/download.php/30074/block_checklist_moodle43_2023100200.zip           && unzip -o d.zip && rm d.zip \
+ && curl -o d.zip https://moodle.org/plugins/download.php/30895/block_checklist_moodle43_2024012000.zip           && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/30306/block_stash_moodle43_2023102000.zip               && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/30581/block_xp_moodle43_2023100803.zip                  && unzip -o d.zip && rm d.zip
 
@@ -151,7 +151,10 @@ RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/
  && curl https://codeload.github.com/cte-zl-ifrn/moodle__enrol_suap/tar.gz/refs/tags/1.0.001          | tar -zx && mv moodle__enrol_suap-* enrol/suap \
  && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.025           | tar -zx && mv moodle__auth_suap-* auth/suap \
  && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0  | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance \
- && curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r4t       | tar -zx && mv moodle__theme_moove-* theme/moove
+ && curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r4t       | tar -zx && mv moodle__theme_moove-* theme/moove \
+ && curl -o /var/www/html/h5p/h5plib/v124/joubel/editor/scripts/h5peditor-tinymce.js https://raw.githubusercontent.com/cte-zl-ifrn/H5P.TextEditor/1.0.0/h5peditor-tinymce.js \
+ && curl -o /var/www/html/h5p/h5plib/v124/joubel/editor/h5peditor.class.php https://raw.githubusercontent.com/cte-zl-ifrn/H5P.TextEditor/1.0.0/hacks/h5peditor.class.php
+
 
 # Removeds:
 # theme_aberto, theme_ead, theme_ledor 
