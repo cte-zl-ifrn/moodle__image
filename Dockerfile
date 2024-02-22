@@ -31,13 +31,13 @@ USER www-data
 
 WORKDIR /var/www/html/mod
 RUN curl -o d.zip https://moodle.org/plugins/download.php/28807/mod_attendance_moodle41_2023020107.zip        && unzip -o d.zip && rm d.zip \
- && curl -o d.zip https://moodle.org/plugins/download.php/29393/mod_customcert_moodle41_2022112801.zip        && unzip -o d.zip && rm d.zip \
- && curl -o d.zip https://moodle.org/plugins/download.php/30894/mod_checklist_moodle43_2024012000.zip         && unzip -o d.zip && rm d.zip \
- && curl -o d.zip https://moodle.org/plugins/download.php/30759/mod_coursecertificate_moodle43_2023122800.zip && unzip -o d.zip && rm d.zip \
+ && curl -o d.zip https://moodle.org/plugins/download.php/31075/mod_customcert_moodle41_2022112806.zip        && unzip -o d.zip && rm d.zip \
+ && curl -o d.zip https://moodle.org/plugins/download.php/31013/mod_checklist_moodle43_2024020200.zip         && unzip -o d.zip && rm d.zip \
+ && curl -o d.zip https://moodle.org/plugins/download.php/31127/mod_coursecertificate_moodle43_2024021300.zip && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/29333/mod_mediagallery_moodle41_2023060200.zip      && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/30739/mod_hvp_moodle43_2023122500.zip               && unzip -o d.zip && rm d.zip \
  && curl -o d.zip https://moodle.org/plugins/download.php/30531/mod_game_moodle43_2023111601.zip              && unzip -o d.zip && rm d.zip \
- && curl -o d.zip https://moodle.org/plugins/download.php/30601/mod_offlinequiz_moodle41_2023070702.zip       && unzip -o d.zip && rm d.zip
+ && curl -o d.zip https://moodle.org/plugins/download.php/31016/mod_offlinequiz_moodle41_2023070703.zip       && unzip -o d.zip && rm d.zip
 # RUN curl -o d.zip https://moodle.org/plugins/download.php/28449/mod_quizgame_moodle42_2022112200.zip          && unzip -o d.zip && rm d.zip
 
 
@@ -118,7 +118,7 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/28680/format_tiles_moo
  && curl -o d.zip https://moodle.org/plugins/download.php/30839/format_remuiformat_moodle43_2024011000.zip    && unzip -o d.zip && rm d.zip
 
 WORKDIR /var/www/html/theme
-RUN curl -o d.zip https://moodle.org/plugins/download.php/30468/theme_adaptable_moodle41_2022112308.zip       && unzip -o d.zip && rm d.zip
+RUN curl -o d.zip https://moodle.org/plugins/download.php/31145/theme_adaptable_moodle41_2022112311.zip       && unzip -o d.zip && rm d.zip
 
 WORKDIR /var/www/html/local
 RUN curl -o d.zip https://moodle.org/plugins/download.php/21216/local_analytics_moodle38_2019070801.zip             && unzip -o d.zip && rm d.zip \
