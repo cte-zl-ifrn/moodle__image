@@ -2,7 +2,7 @@ FROM php:8.1.27-apache-bullseye
 # FROM php:8.2.13-apache-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG MOODLE_VERSION=4.1.8
+ARG MOODLE_VERSION=4.1.9
 
 ADD build/php-extensions.sh /tmp/build/php-extensions.sh
 ADD build/locale.gen /etc/locale.gen
@@ -146,10 +146,10 @@ RUN curl -o d.zip https://moodle.org/plugins/download.php/27125/profilefield_aut
 
 WORKDIR /var/www/html/
 
-RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.053t         | tar -zx && mv moodle__local_suap-* local/suap \
+RUN curl https://codeload.github.com/cte-zl-ifrn/moodle__local_suap/tar.gz/refs/tags/0.2.054          | tar -zx && mv moodle__local_suap-* local/suap \
  && curl https://codeload.github.com/plaforedu/pnp/tar.gz/refs/tags/1.0.5                             | tar -zx && mv pnp-* local/pnp \
  && curl https://codeload.github.com/cte-zl-ifrn/moodle__enrol_suap/tar.gz/refs/tags/1.0.001          | tar -zx && mv moodle__enrol_suap-* enrol/suap \
- && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.025           | tar -zx && mv moodle__auth_suap-* auth/suap \
+ && curl https://codeload.github.com/cte-zl-ifrn/moodle__auth_suap/tar.gz/refs/tags/0.2.026           | tar -zx && mv moodle__auth_suap-* auth/suap \
  && curl https://codeload.github.com/cte-zl-ifrn/moodle__block_suapattendance/tar.gz/refs/tags/0.1.0  | tar -zx && mv moodle__block_suapattendance-* blocks/suapattendance \
  && curl https://codeload.github.com/cte-zl-ifrn/moodle__theme_moove/tar.gz/refs/tags/4.1.1.r4t       | tar -zx && mv moodle__theme_moove-* theme/moove \
  && curl -o /var/www/html/h5p/h5plib/v124/joubel/editor/scripts/h5peditor-tinymce.js https://raw.githubusercontent.com/cte-zl-ifrn/H5P.TextEditor/1.0.0/h5peditor-tinymce.js \
